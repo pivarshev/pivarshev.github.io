@@ -1,0 +1,153 @@
+body {
+    font-family: 'Helvetica';
+    overflow:hidden;
+    scroll-behavior: smooth;
+    /* background-color:lightcyan; */
+}
+
+a {
+    text-decoration:none;
+    color:black;
+}
+
+h2 {
+    font-weight:normal;
+    line-height:150%;
+}
+
+h3 {
+    font-style:italic;
+}
+
+h5 {
+    font-weight:normal;
+    font-size:16px;
+    /* line-height:20%; */
+}
+
+#intro {
+    position:absolute;
+    width:45%;
+    left:1.25%;
+    top:16%;
+    text-align:right;
+    padding-right:12.5%;
+    line-height:20%;
+}
+
+#desc {
+    position:absolute;
+    width:15%;
+    right:55%;
+    top:16%;
+    text-align:right;
+} #desc h3 {
+    font-size:40px;
+    line-height:20%;
+} #desc h5 {
+    line-height:120%;
+}
+
+#scrollbox {
+    overflow-y:scroll;
+    overflow-x:hidden;
+    height:91%;
+    width:50%;
+    position:absolute;
+    right:1.25%;
+    top:2.5%;
+    text-align:center;
+    padding:1%;
+} #scrollbox img:hover {
+    cursor:pointer;
+}
+
+#illustration {
+    width:25%;
+    position:absolute;
+    right:55%;
+    bottom:-4%;
+} #illustration img {
+    width:100%;
+    height:auto;
+}
+
+#navigation {
+    font-size:20px;
+    text-align:right;
+    width:10%;
+    right:54%;
+    bottom:5%;
+    /* background-color:red; */
+    position:fixed;
+}
+
+#vertical-left table {
+    width:100%;
+} #vertical-left table tr td {
+    width:50%;
+    text-align:left;
+} #vertical-left table tr td img {
+    width:100%;
+    height:auto;
+} #vertical-left table tr td h3 {
+    font-size:28px;
+    padding-left:7.5%;
+    line-height:10%;
+} #vertical-left table tr td h4 {
+    font-weight:normal;
+    font-size:16px;
+    line-height:110%;
+    padding-left:7.5%;
+}
+
+#vertical-right table {
+    width:100%;
+} #vertical-right table tr td {
+    width:50%;
+    text-align:right;
+} #vertical-right table tr td img {
+    width:100%;
+    height:auto;
+} #vertical-right table tr td h3 {
+    font-size:28px;
+    padding-right:7.5%;
+    line-height:10%;
+} #vertical-right table tr td h4 {
+    font-weight:normal;
+    font-size:16px;
+    line-height:110%;
+    padding-right:7.5%;
+}
+
+#horizontal table {
+    width:100%;
+} #horizontal table tr td {
+    width:100%;
+    height:auto;
+    text-align:center;
+} #horizontal table tr td #double {
+    width:45%;
+    padding-left:2%;
+    padding-right:2%;
+    height:auto;
+} #horizontal table tr td #triple {
+    width:30%;
+    padding-left:1%;
+    padding-right:1%;
+    height:auto;
+} #horizontal table tr td img {
+    width:85%;
+    height:auto;
+} #horizontal table tr td h3 {
+    font-size:28px;
+    padding-left:7.5%;
+    line-height:10%;
+    padding-right:7%;
+} #horizontal table tr td h4 {
+    font-weight:normal;
+    font-size:16px;
+    line-height:110%;
+    padding-left:7.5%;
+    padding-right:7%;
+}
