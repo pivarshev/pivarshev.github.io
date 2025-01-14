@@ -1,169 +1,352 @@
-body {
-    font-family: 'Helvetica';
-    overflow:hidden;
+/* General reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif; /* Use Helvetica as the main font */
+    color: #333; /* Dark gray text */
+    background-color: #fff; /* White background */
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
     scroll-behavior: smooth;
-    /* background-color:lightcyan; */
 }
 
-a {
-    text-decoration:none;
-    color:black;
+body.fade-in {
+    opacity: 1;
 }
 
-h2 {
-    font-weight:normal;
-    line-height:150%;
+body.fade-out {
+    opacity: 0;
 }
 
-h3 {
-    font-style:italic;
+body.fade-out a {
+    pointer-events: none;
+    opacity: 0.5;
 }
 
-h5 {
-    font-weight:normal;
-    font-size:16px;
-    /* line-height:20%; */
-}
 
-@media only screen and (max-width: 992px) {
-  #mobile-message {
-    display: block !important;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    z-index: 9999;
-    text-align: center;
-    font-weight: bold;
-    font-size:20px;
+/* Desktop Layout Styles */
+.desktop-layout {
+    display: block; /* Default: show on larger screens */
   }
+  
+  .mobile-layout {
+    display: none; /* Default: hide on larger screens */
+  }
+  
+  /* Mobile-specific styles */
+  @media (max-width: 768px) {
+    .desktop-layout {
+      display: none; /* Hide desktop layout */
+    }
+  
+    .mobile-layout {
+      display: block; /* Show mobile layout */
+    }
+  }
+
+
+
+/* Container for layout */
+.container {
+    display: grid;
+    grid-template-columns: 2fr 5fr; /* Bio panel (2/7) and main panel (5/7) */
+    height: 100vh; /* Full viewport height */
 }
 
-#intro {
-    position:absolute;
-    width:45%;
-    left:1.25%;
-    top:16%;
+/* Bio Section */
+.bio {
+    background-color: #eee; /* Light blue for visualization */
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bio-image {
+    background-color: #fff; /* Placeholder background color */
+    max-width: 350px; /* Sets a maximum width for the image */
+    height: auto; /* Maintains the aspect ratio */
+    display: block; /* Removes extra inline space */
+}
+
+.bio-image-placeholder {
+    background-color: #eee;
+    max-width: 350px;
+    height: auto;
+    display: block;
+}
+
+.bio-items {
+    /* background-color: #eee; */
+    display: flex;
+    flex-direction: column; /* Stack links vertically */
+    justify-content: space-between; /* Spread items evenly across the height */
+    height: 50%; /* Use the full height of the bio section */
+    list-style: none; /* Remove default list styles */
+    margin: 1.5rem; /* Remove extra margin from the <ul> */
     text-align:right;
-    padding-right:12.5%;
-    line-height:20%;
 }
 
-#desc {
-    position:absolute;
-    width:15%;
-    right:55%;
-    top:16%;
-    text-align:right;
-} #desc h3 {
-    font-size:40px;
-    line-height:20%;
-} #desc h5 {
-    line-height:120%;
+h1 {
+    font-size: 20px;
+    line-height: 125%;
 }
 
-#scrollbox {
-    overflow-y:scroll;
-    overflow-x:hidden;
-    height:91%;
+h4 {
+    font-size: 35px;
+    line-height: 100%;
+}
+
+h1:hover {
+    background-color: #ddd;
+}
+
+.bio-items p {
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.bio-items #title {
+    background-color:#eee;
+    margin-left:auto;
     width:50%;
-    position:absolute;
-    right:1.25%;
-    top:2.5%;
+    text-align:right;
+}
+
+.bio-items #description {
+    background-color:#eee;
+    display: flex;
+    flex-direction: column;
+    font-size: 110%;
+    color: #333;
+    justify-content:center;
+    width:50%;
+    text-align:right;
+    margin-left:auto;
+    margin-bottom:1rem;
+    line-height: 125%;
+    min-width:150px;
+}
+
+.bio-items #links {
+    background-color:#eee;
+    justify-content:center;
+    flex-direction:column;
+    justify-items:space-between;
+}
+
+.bio-items li {
+    background-color: #eee;
     text-align:center;
-    padding:1%;
-} #scrollbox img:hover {
-    cursor:pointer;
 }
 
-#illustration {
-    width:25%;
-    position:absolute;
-    right:55%;
-    bottom:-4%;
-} #illustration img {
-    width:100%;
-    height:auto;
+.bio-items #links a {
+    text-decoration: none; /* Remove underlines */
+    color: #666; /* Link text color */
+    font-weight: bold; /* Bold text for visibility */
+    padding: 0.5rem; /* Add clickable space */
+    background-color: #eee;
+    transition: background-color 0.3s ease;
+    transition: color 0.9s ease;
 }
 
-#navigation {
-    font-size:20px;
-    text-align:right;
-    width:10%;
-    right:54%;
-    bottom:5%;
-    /* background-color:red; */
-    position:fixed;
+/* Hover effect for links */
+.bio-items #links a:hover {
+    background-color: #ddd;
+    color: #333;
 }
 
-#vertical-left table {
-    width:100%;
-} #vertical-left table tr td {
-    width:50%;
-    text-align:left;
-} #vertical-left table tr td img {
-    width:100%;
-    height:auto;
-} #vertical-left table tr td h3 {
-    font-size:28px;
-    padding-left:7.5%;
-    line-height:10%;
-} #vertical-left table tr td h4 {
-    font-weight:normal;
-    font-size:16px;
-    line-height:110%;
-    padding-left:7.5%;
+.bio-links {
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    height:50%;
+    list-style: none;
+    padding-bottom: 2rem;
 }
 
-#vertical-right table {
-    width:100%;
-} #vertical-right table tr td {
-    width:50%;
-    text-align:right;
-} #vertical-right table tr td img {
-    width:100%;
-    height:auto;
-} #vertical-right table tr td h3 {
-    font-size:28px;
-    padding-right:7.5%;
-    line-height:10%;
-} #vertical-right table tr td h4 {
-    font-weight:normal;
-    font-size:16px;
-    line-height:110%;
-    padding-right:7.5%;
-}
-
-#horizontal table {
-    width:100%;
-} #horizontal table tr td {
-    width:100%;
-    height:auto;
+.bio-links li {
+    background-color: #eee;
+    color: #333;
+    text-decoration:bold;
     text-align:center;
-} #horizontal table tr td #double {
-    width:45%;
-    padding-left:2%;
-    padding-right:2%;
+}
+
+.bio-links li a {
+    text-decoration: none; /* Remove underlines */
+    color: #666; /* Link text color */
+    font-weight: bold; /* Bold text for visibility */
+    padding: 0.5rem; /* Add clickable space */
+    background-color: #eee;
+    transition: background-color 0.3s ease;
+    transition: color 0.9s ease;
+}
+
+.bio-links li a:hover {
+    background-color: #ddd;
+    color: #333;
+}
+
+
+/* Main Grid Section */
+.grid-container {
+    background-color: #fff; /* Light pink for visualization */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+    gap: 1rem; /* Equal spacing between rows and columns */
+    width: 75%;
+    margin: 0 auto;
+    align-items: center;
+    justify-items: center;
+}
+
+.grid-item {
+    background-color: #eee; /* Light orange for visualization */
+    width: 200px; /* Size of the squares */
+    aspect-ratio: 1; /* Ensures squares remain perfectly square */
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-item a {
+    text-decoration: none !important;
+    color: #333;
+    font-weight: bold;
+    line-height:125%;
+}
+
+.grid-item-clear {
+    background-color: #fff; /* Light orange for visualization */
+    width: 200px; /* Size of the squares */
+    aspect-ratio: 1; /* Ensures squares remain perfectly square */
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-item-clear:hover {
+    background-color: #eee;
+    transition: background-color 2.0s ease;
+}
+
+.grid-item a:link,
+.grid-item a:hover,
+.grid-item a:visited,
+.grid-item a:active {
+    color: #333 !important; /* Keep the same color for all states */
+    text-decoration-color: #333;
+}
+
+.grid-item:hover {
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    background-color: #ddd;
+    transition: background-color 2.0s ease;
+}
+
+.grid-item-clear a{
+    color: #fff;
+}
+
+
+/* Scrollbox container: Flexbox for side-by-side alignment */
+.scrollbox-container {
+    display: flex; /* Arrange scrollboxes side by side */
+    gap: 2rem; /* Space between the scrollboxes */
+    padding: 2rem;
+}
+
+/* Scrollboxes */
+.scrollbox {
+    flex: 1; /* Make both scrollboxes equal in width */
+    max-height: 90vh; /* Limit height to ensure scrolling */
+    overflow-y: auto; /* Add vertical scrolling */
+    align-content: center;
+    gap: 2rem;
+    padding: 1rem;
+    background-color: #fff; /* Light background for contrast */
+}
+
+/* Scrollbox container: Grid for square alignment */
+.panels-scrollbox-container {
+    display: grid; /* Switch to grid layout */
+    grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
+    grid-template-rows: repeat(2, 1fr); /* Two rows of equal height */
+    gap: 1.9rem; /* Space between scrollboxes */
+    padding: 2rem;
+    height: 90vh; /* Ensure container fills most of the vertical viewport */
+}
+
+/* Scrollboxes */
+.panels-scrollbox {
+    max-height: 100%; /* Ensure each scrollbox fills its grid cell height */
+    overflow-y: auto; /* Add vertical scrolling */
+    padding: 1rem;
+    background-color: #fff; /* Light background for contrast */
+}
+
+
+/* Scrollbox items */
+.scroll-item {
+    /* background-color: green; */
+    font-size: 85%;
+    display:flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
+}
+
+table {
+    margin: 0 auto; /* Centers the table itself horizontally in its container */
+    border-collapse: collapse; /* Optional: Removes spacing between table cells */
+}
+
+td {
+    text-align: center; /* Centers the text horizontally inside cells */
+    vertical-align: middle; /* Centers the text vertically inside cells */
+    padding: 10px; /* Optional: Adds padding inside cells */
+}
+.scroll-item img {
+    width: 100%;
     height:auto;
-} #horizontal table tr td #triple {
-    width:30%;
-    padding-left:1%;
-    padding-right:1%;
+}
+
+#vert-description {
+    /* background-color: blue; */
+    width: 30%;
+    margin: 1rem;
+    line-height:133%;
+    text-align:center;
+    align-items:center;
+}
+
+#horiz-description {
+    /* background-color: blue; */
+    width: 95%;
+    margin: 1rem;
+    line-height:133%;
+    text-align:center;
+    align-items:center;
+}
+
+#horiz-image {
+    /* background-color: red; */
+    width: 95%;
     height:auto;
-} #horizontal table tr td img {
-    width:85%;
+    align-items:center;
+    padding-bottom:1rem;
+}
+
+#vert-image {
+    /* background-color: red; */
+    width: 70%;
     height:auto;
-} #horizontal table tr td h3 {
-    font-size:28px;
-    padding-left:7.5%;
-    line-height:10%;
-    padding-right:7%;
-} #horizontal table tr td h4 {
-    font-weight:normal;
-    font-size:16px;
-    line-height:110%;
-    padding-left:7.5%;
-    padding-right:7%;
+    align-items:center;
 }
