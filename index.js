@@ -1,4 +1,7 @@
 window.onload = function() {
+
+    window.scrollTo(0, 0); // Scrolls to the top-left corner
+
     // Add 'loaded' class after everything is loaded (including images)
     document.body.classList.add('loaded');
 
@@ -8,8 +11,6 @@ window.onload = function() {
         document.body.style.opacity = 1;
     }, 100); // Slight delay to ensure transition starts after everything is ready
 };
-
-
 // Add fade-in when the page is fully loaded
 window.addEventListener("load", function() {
     document.body.classList.add("fade-in");
