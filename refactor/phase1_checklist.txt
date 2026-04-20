@@ -1,0 +1,75 @@
+PHASE 1 — QUICK WINS
+No structural changes. Low risk. Each item can be its own commit.
+================================================================
+
+
+[ ] 1. REPLACE <list> WITH <ul>
+    Files: grids.html, recreations.html, feeling.html,
+           self.html, panels.html, appreciation.html, misc.html
+    Find:  <list
+    Replace: <ul
+    Also:  </list> → </ul>
+    Test: Verify navigation links still display and work
+
+
+[ ] 2. ADD rel="noopener noreferrer" TO EXTERNAL LINKS
+    Files: All HTML files
+    Find:  target="_blank"
+    Replace: target="_blank" rel="noopener noreferrer"
+    Count: ~192 links across all pages
+    Test: Verify links still open in new tabs
+
+
+[ ] 3. ADD loading="lazy" TO IMAGES BELOW THE FOLD
+    Files: All gallery HTML files
+    Skip: First 1-2 images on each page (above the fold)
+    Find:  <img src="artworks/
+    Replace: <img loading="lazy" src="artworks/
+    Test: Scroll through each gallery, verify images load
+          as you scroll down
+
+
+[ ] 4. ADD META DESCRIPTION AND OPEN GRAPH TAGS
+    Files: All HTML files
+    Add to <head> section of each page:
+
+    index.html:
+      <meta name="description" content="Pavel Pivarshev — artist portfolio featuring grids, recreations, self-portraits, and more.">
+      <meta property="og:title" content="Pavel Pivarshev">
+      <meta property="og:description" content="Artist portfolio">
+      <meta property="og:image" content="newpavel.png">
+      <meta property="og:type" content="website">
+
+    Gallery pages (adjust description per page):
+      <meta name="description" content="Pavel Pivarshev — [page name]">
+      <meta property="og:title" content="Pavel Pivarshev — [page name]">
+      <meta property="og:description" content="[brief description]">
+      <meta property="og:image" content="newpavel.png">
+      <meta property="og:type" content="website">
+
+    Test: Use https://www.opengraph.xyz/ to preview link cards
+
+
+[ ] 5. REMOVE EMPTY PLACEHOLDER IMAGES
+    Files: All gallery HTML files
+    Find:  <img class="bio-image-placeholder">
+    Action: Delete the line
+    Test: Verify no broken image icons appear
+
+
+[ ] 6. REPLACE INLINE STYLES WITH CSS CLASSES
+    Files: All gallery HTML files + index.css
+
+    Step A — Add these classes to index.css:
+      .artwork-horizontal { width: 95%; height: auto; }
+      .artwork-vertical   { width: 70%; height: auto; }
+      .artwork-full       { width: 100%; height: auto; }
+
+    Step B — Replace inline styles in HTML:
+      style="width:68.5%;"  → class="artwork-horizontal"
+      style="width:95%;"    → class="artwork-horizontal"
+      style="width:70%;"    → class="artwork-vertical"
+      style="height:90vh;"  → class="artwork-full"
+      (adjust class assignments based on image orientation)
+
+    Test: Compare before/after screenshots of each page

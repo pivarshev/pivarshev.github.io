@@ -1,0 +1,318 @@
+SITE AUDIT & REFACTOR PLAN
+pivarshev.github.io
+April 20, 2026
+Prepared by: Shailen Parmar
+
+================================================================
+OVERVIEW
+================================================================
+
+The site is a static artist portfolio hosted on GitHub Pages.
+8 HTML pages, 1 CSS file, 1 JS file, 2 Python helper scripts,
+and ~183 image assets across 7 directories.
+
+Stack: Plain HTML + CSS + vanilla JavaScript. No framework,
+no build step, no backend.
+
+The visual design and content are strong. The code underneath
+has structural issues that make the site harder to maintain,
+slower to load, and less visible to search engines.
+
+This audit covers code quality only. No UI or design changes
+are proposed.
+
+
+================================================================
+ISSUES FOUND
+================================================================
+
+
+1. DUPLICATED HTML FOR MOBILE AND DESKTOP
+   Severity: High
+   Affects: All 8 pages
+
+   Every page contains two complete copies of its content:
+   one wrapped in <div class="desktop-layout"> and another
+   in <div class="mobile-layout">. A CSS media query at
+   768px toggles which one is visible using display:none.
+
+   This means every content update (adding a new artwork,
+   fixing a typo, changing a link) must be done twice. If
+   one copy is updated and the other is missed, the mobile
+   and desktop versions fall out of sync.
+
+   Estimated duplication: 40-60% of each HTML file is
+   repeated content.
+
+   Fix: Use a single HTML structure per page. Use CSS media
+   queries and responsive design to adapt the layout at
+   different screen sizes. This is standard practice and
+   will cut the HTML in each file roughly in half.
+
+
+2. TABLES USED FOR LAYOUT
+   Severity: High
+   Affects: All gallery pages (420+ instances)
+
+   Every artwork is displayed using a <table> with a single
+   row and column. Tables are meant for tabular data (rows
+   and columns of related values), not for positioning an
+   image next to a caption.
+
+   This makes the code harder to read, harder to style, and
+   confuses assistive technologies that expect actual data
+   tables.
+
+   Fix: Replace with modern CSS layout. Each artwork should
+   be a <figure> element containing an <img> and a
+   <figcaption>. Use Flexbox or Grid for positioning. This
+   is cleaner, more semantic, and easier to make responsive.
+
+   Before (current):
+     <div class="scroll-item">
+       <table><tr><td id="horiz-image">
+         <a target="_blank" href="artworks/...">
+           <img src="artworks/..." style="width:68.5%;">
+         </a>
+       </td></tr><tr><td id="horiz-description">
+         <b><i>Title</i></b><br>info
+       </td></tr></table>
+     </div>
+
+   After (proposed):
+     <figure class="artwork">
+       <a href="artworks/..." target="_blank" rel="noopener noreferrer">
+         <img src="artworks/..." class="artwork-horizontal">
+       </a>
+       <figcaption>
+         <cite>Title</cite><br>info
+       </figcaption>
+     </figure>
+
+
+3. INVALID HTML ELEMENT: <list>
+   Severity: High
+   Affects: All gallery pages
+
+   Every gallery page uses a custom <list> element for
+   navigation links. This is not a valid HTML element.
+   Browsers treat it as a generic inline element with no
+   semantic meaning.
+
+   Fix: Replace <list> with <ul> (unordered list). This is
+   a simple find-and-replace.
+
+
+4. INLINE STYLES
+   Severity: Medium
+   Affects: All gallery pages (30+ instances)
+
+   Image dimensions and spacing are set directly on HTML
+   elements using the style attribute:
+     style="width:68.5%;"
+     style="height:90vh;"
+     style="width:70%;"
+
+   These are inconsistent and scattered across files, making
+   it hard to update sizing globally.
+
+   Fix: Define a small set of CSS classes for common image
+   sizes and apply them by class name:
+     .artwork-horizontal  { width: 95%; height: auto; }
+     .artwork-vertical    { width: 70%; height: auto; }
+     .artwork-square      { width: 80%; height: auto; }
+
+
+5. NON-SEMANTIC HTML STRUCTURE
+   Severity: Medium
+   Affects: All pages
+
+   The site does not use semantic HTML5 elements:
+   - No <nav> element wrapping navigation links
+   - No <figure> / <figcaption> for artworks
+   - No <main> on most gallery pages
+   - Artwork titles use <b><i> instead of <cite>
+     (<cite> is the correct element for titles of
+     creative works)
+   - Inconsistent heading hierarchy (some pages have
+     <h1>, others don't; no clear h1 > h2 > h3 flow)
+
+   Why it matters: Semantic HTML helps search engines
+   understand page structure, improves accessibility,
+   and makes the code self-documenting.
+
+   Fix: Wrap navigation in <nav>, artworks in <figure>,
+   titles in <cite>, and ensure each page has one <h1>.
+
+
+6. MISSING SEO AND SOCIAL SHARING TAGS
+   Severity: Medium
+   Affects: All pages
+
+   No pages have:
+   - <meta name="description"> (search result snippet)
+   - Open Graph tags (og:title, og:description, og:image)
+
+   When someone shares a link to the site on Instagram,
+   LinkedIn, iMessage, or any other platform, the preview
+   will be blank or show just the URL. For an artist
+   portfolio, rich previews with an image are especially
+   valuable.
+
+   Fix: Add meta description and Open Graph tags to each
+   page. Example:
+     <meta name="description" content="Pavel Pivarshev -
+       artist portfolio featuring grids, recreations,
+       self-portraits, and more.">
+     <meta property="og:title" content="Pavel Pivarshev">
+     <meta property="og:description" content="Artist portfolio">
+     <meta property="og:image" content="newpavel.png">
+
+
+7. NO LAZY LOADING ON IMAGES
+   Severity: Medium
+   Affects: All gallery pages
+
+   All images load immediately when a page is opened.
+   The panels page loads 82 images at once. On slower
+   connections this means a long wait before anything
+   is visible.
+
+   Fix: Add loading="lazy" to every image that is not
+   visible on initial page load. This is a native HTML
+   attribute — no JavaScript needed. The browser will
+   only load images as the user scrolls to them.
+
+     <img src="artworks/..." loading="lazy">
+
+
+8. SECURITY ON EXTERNAL LINKS
+   Severity: Low
+   Affects: 192 links across all pages
+
+   All links that open in a new tab use target="_blank"
+   but do not include rel="noopener noreferrer". Without
+   this, the page that opens in the new tab has access to
+   the original page and could potentially redirect it.
+
+   Fix: Add rel="noopener noreferrer" to every link with
+   target="_blank". This is a simple find-and-replace.
+
+
+9. SINGLE CSS FILE FOR ENTIRE SITE
+   Severity: Low
+   Affects: index.css (375 lines)
+
+   All styles for all 8 pages are in one file. As the site
+   grows, this becomes harder to navigate.
+
+   Fix: Consider splitting into base.css (resets, typography,
+   shared layout) and page-specific styles, or at minimum
+   add clear section comments to organize the existing file.
+
+
+10. PYTHON SCRIPTS ARE UNDOCUMENTED
+    Severity: Low
+    Affects: html_rewriter.py, name_rewriter.py
+
+    These scripts generate HTML for the panels page from
+    text input files (matrix_html.txt, matrix_labels.txt)
+    that are not included in the repo. There are no comments
+    or README explaining how to use them.
+
+    Fix: Add brief comments to each script explaining what
+    it does, what input it expects, and how to run it. Move
+    both scripts to a /scripts directory.
+
+
+11. EMPTY PLACEHOLDER ELEMENTS
+    Severity: Low
+    Affects: All gallery pages
+
+    Every gallery page includes:
+      <img class="bio-image-placeholder">
+    This has no src or alt attribute and renders as a broken
+    image icon in some browsers.
+
+    Fix: Remove these elements, or replace with a proper
+    spacer if the layout requires it.
+
+
+================================================================
+RECOMMENDED REFACTOR PLAN
+================================================================
+
+PHASE 1 — Quick wins (no structural changes, low risk)
+------------------------------------------------------
+These can each be done in a single commit and won't break
+anything visually.
+
+ [ ] Replace <list> with <ul> on all pages
+ [ ] Add rel="noopener noreferrer" to all target="_blank" links
+ [ ] Add loading="lazy" to images below the fold
+ [ ] Add <meta name="description"> and Open Graph tags
+ [ ] Remove empty <img class="bio-image-placeholder"> elements
+ [ ] Replace inline styles with CSS classes
+
+Estimated effort: 1-2 hours
+
+
+PHASE 2 — Structural refactor (careful, test thoroughly)
+--------------------------------------------------------
+These change the HTML structure but keep the visual output
+identical.
+
+ [ ] Consolidate desktop/mobile into single responsive HTML
+     per page using CSS media queries
+ [ ] Replace all layout <table> elements with <figure> +
+     Flexbox/Grid
+ [ ] Add semantic elements: <nav>, <main>, <figure>,
+     <figcaption>, <cite>
+ [ ] Ensure each page has exactly one <h1> and a logical
+     heading hierarchy
+ [ ] Organize CSS with section comments or split into
+     multiple files
+
+Estimated effort: 4-6 hours
+
+
+PHASE 3 — Enhancements (optional, adds value)
+----------------------------------------------
+ [ ] Compress and optimize image assets
+ [ ] Document Python build scripts
+ [ ] Move scripts to /scripts directory
+ [ ] Consider a lightweight templating approach to reduce
+     repeated boilerplate across pages (shared header,
+     bio panel, navigation)
+
+Estimated effort: 2-3 hours
+
+
+================================================================
+FILE INVENTORY
+================================================================
+
+Pages:
+  index.html          Homepage (bio + navigation grid)
+  grids.html          Grids gallery (14 works)
+  recreations.html    Art recreations (20+ works)
+  feeling.html        Feeling project (20 works)
+  self.html           Self-portraits (13 works)
+  panels.html         Individual panels (82 works)
+  appreciation.html   Friend portraits (6 works)
+  misc.html           Miscellaneous works
+
+Styles & Scripts:
+  index.css           All site styles (375 lines)
+  index.js            Page fade transitions (49 lines)
+
+Build Tools:
+  html_rewriter.py    Generates panel HTML from text input
+  name_rewriter.py    Generates panel labels from text input
+
+Assets:
+  newpavel.png        Artist portrait
+  icon.png            Favicon
+  pavel_resume.pdf    Resume
+  pivarshev_cv.pdf    CV
+  artworks/           183 images across 7 subdirectories

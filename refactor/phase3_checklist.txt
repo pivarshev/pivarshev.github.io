@@ -1,0 +1,90 @@
+PHASE 3 — ENHANCEMENTS
+Optional improvements. Do after Phase 1 and 2 are complete.
+================================================================
+
+
+[ ] 1. OPTIMIZE IMAGES
+    Directory: artworks/ (183 files)
+
+    a. Compress existing JPGs:
+       - Use a tool like ImageOptim, TinyPNG, or squoosh.app
+       - Target: reduce file size 30-50% with no visible
+         quality loss
+       - Back up originals first
+
+    b. Consider WebP format:
+       - Modern browsers support WebP (smaller file size
+         than JPG at same quality)
+       - Use <picture> element for backwards compatibility:
+           <picture>
+             <source srcset="artworks/grids/grid1.webp" type="image/webp">
+             <img src="artworks/grids/grid1.jpg">
+           </picture>
+
+    Test: Compare image quality before/after compression.
+          Check load time in browser dev tools > Network tab.
+
+
+[ ] 2. DOCUMENT PYTHON BUILD SCRIPTS
+    Files: html_rewriter.py, name_rewriter.py
+
+    Add a comment block at the top of each script:
+      # html_rewriter.py
+      # Reads: matrix_html.txt (not in repo)
+      # Outputs: HTML scroll-item blocks for panels.html
+      # Usage: python html_rewriter.py > output.html
+      # Input format: [describe expected format]
+
+    Also: note what matrix_html.txt and matrix_labels.txt
+    contain and how to regenerate them if needed.
+
+
+[ ] 3. MOVE SCRIPTS TO /scripts DIRECTORY
+    Create: /scripts/
+    Move:   html_rewriter.py → /scripts/html_rewriter.py
+            name_rewriter.py → /scripts/name_rewriter.py
+
+    Test: Verify scripts still run from new location
+          (update any relative file paths inside them)
+
+
+[ ] 4. ADD SHARED TEMPLATE APPROACH
+    Every gallery page repeats the same boilerplate:
+      - <head> with meta tags, CSS link, preloads
+      - Bio sidebar with placeholder image and nav links
+      - Scrollbox container structure
+      - <script> tag at bottom
+
+    Options (from simple to advanced):
+
+    Option A — HTML includes via JavaScript:
+      Extract shared header/footer into partials.
+      Load with fetch() on page load.
+      Pro: No build step. Con: Flash of unstyled content.
+
+    Option B — Static site generator (recommended):
+      Use 11ty (eleventy), a lightweight static site
+      generator. Write content in HTML or Markdown,
+      define a shared layout template, and 11ty builds
+      the final HTML files.
+      Pro: Clean separation of content and layout.
+      Con: Adds a build step (npm install + npx eleventy).
+
+    Option C — Simple build script:
+      Write a Python or Node script that combines a
+      shared template with per-page content files.
+      Pro: No new dependencies. Con: Custom tooling.
+
+    This is optional and only worthwhile if the site will
+    continue to grow with new gallery pages.
+
+
+[ ] 5. ADD A .gitignore
+    Create: .gitignore in repo root
+
+    Suggested contents:
+      .DS_Store
+      *.pyc
+      __pycache__/
+      node_modules/
+      .env

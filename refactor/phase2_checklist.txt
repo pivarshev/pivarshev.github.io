@@ -1,0 +1,157 @@
+PHASE 2 — STRUCTURAL REFACTOR
+Changes HTML structure. Visual output must stay identical.
+Test thoroughly in both desktop and mobile views after each step.
+================================================================
+
+
+[ ] 1. CONSOLIDATE DESKTOP/MOBILE INTO SINGLE HTML
+    Files: All HTML files
+    This is the biggest change. Do one page at a time.
+
+    Current pattern (every page):
+      <div class="desktop-layout">
+        ... full page content ...
+      </div>
+      <div class="mobile-layout">
+        ... same content duplicated ...
+      </div>
+
+    Target pattern:
+      <div class="page-content">
+        ... single copy of content ...
+      </div>
+
+    CSS handles layout differences:
+      .page-content { /* desktop layout rules */ }
+      @media (max-width: 768px) {
+        .page-content { /* mobile layout rules */ }
+      }
+
+    Suggested order (easiest to hardest):
+      a. appreciation.html (smallest, 6 works)
+      b. misc.html
+      c. self.html
+      d. grids.html
+      e. feeling.html
+      f. recreations.html
+      g. index.html (homepage, unique layout)
+      h. panels.html (largest, 82 works, 4-column desktop)
+
+    Test: Resize browser window across breakpoint (768px).
+          Content and links must match on both sides.
+
+
+[ ] 2. REPLACE LAYOUT TABLES WITH FIGURE + FLEXBOX
+    Files: All gallery HTML files
+    Do this after step 1 (less code to change).
+
+    Current:
+      <div class="scroll-item">
+        <table><tr><td id="horiz-image">
+          <a target="_blank" href="artworks/...">
+            <img src="artworks/...">
+          </a>
+        </td></tr><tr><td id="horiz-description">
+          <b><i>Title</i></b><br>info
+        </td></tr></table>
+      </div>
+
+    Target:
+      <figure class="artwork">
+        <a href="artworks/..." target="_blank" rel="noopener noreferrer">
+          <img src="artworks/..." loading="lazy">
+        </a>
+        <figcaption>
+          <cite>Title</cite><br>info
+        </figcaption>
+      </figure>
+
+    CSS additions:
+      .artwork {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 2rem;
+        margin: 0;
+      }
+      .artwork img {
+        width: 100%;
+        height: auto;
+      }
+      .artwork figcaption {
+        text-align: center;
+        line-height: 133%;
+        margin-top: 1rem;
+      }
+
+    Test: Compare artwork spacing and alignment before/after
+
+
+[ ] 3. ADD SEMANTIC HTML ELEMENTS
+    Files: All HTML files
+
+    a. Wrap navigation links in <nav>:
+       <nav>
+         <ul>
+           <li><a href="index.html">← back</a></li>
+         </ul>
+       </nav>
+
+    b. Wrap main content in <main>:
+       <main> ... gallery content ... </main>
+
+    c. Replace <b><i>Title</i></b> with <cite>Title</cite>
+
+    d. Replace back-link text:
+       &lt; &lt; &lt;  →  ← back
+
+    Test: Verify links work. Visual styling may need minor
+          CSS adjustments for <cite> and <nav>.
+
+
+[ ] 4. FIX HEADING HIERARCHY
+    Files: All HTML files
+
+    Each page should have:
+      <h1> — page title (one per page)
+      <h2> — section titles if needed
+      No skipped levels
+
+    Current issues:
+      - Some pages have no <h1>
+      - Some use <h1> for body text (index.html bio)
+      - <h4> used for mobile title on index.html
+
+    Test: Use browser dev tools > Accessibility tab to
+          verify heading order
+
+
+[ ] 5. ORGANIZE CSS
+    File: index.css
+
+    Option A (minimal): Add section comments
+      /* ======================== */
+      /* RESET & BASE            */
+      /* ======================== */
+      ...
+      /* ======================== */
+      /* LAYOUT                  */
+      /* ======================== */
+      ...
+      /* ======================== */
+      /* GALLERY PAGES           */
+      /* ======================== */
+
+    Option B (cleaner): Split into files
+      base.css        — resets, typography, colors
+      layout.css      — container, bio, grid
+      gallery.css     — scrollbox, artwork, captions
+      transitions.css — fade in/out
+
+    If splitting, add all files to each HTML <head>:
+      <link rel="stylesheet" href="base.css">
+      <link rel="stylesheet" href="layout.css">
+      <link rel="stylesheet" href="gallery.css">
+      <link rel="stylesheet" href="transitions.css">
+
+    Test: Full visual check of all pages
