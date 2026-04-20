@@ -354,6 +354,11 @@ td {
     align-items:center;
 }
 
+/* Artwork image size classes (replaces inline styles) */
+.artwork-tall    { width: auto; height: 90vh; }
+.artwork-wide    { width: 68.5%; height: auto; }
+.artwork-medium  { width: 70%; height: auto; }
+
 .pink-dot {
     display: inline-block;
     width: 8px; /* Adjust size */

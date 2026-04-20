@@ -63,4 +63,9 @@ Optional. Only after Phase 1 and 2 are done and verified.
 | Date | What was done | Phase | Verified? |
 |------|---------------|-------|-----------|
 | 2026-04-20 | Created refactor folder with audit and checklists | Setup | N/A |
+| 2026-04-20 | Replaced `<list>` with `<ul>` on all gallery pages | Phase 1 | Yes |
+| 2026-04-20 | Added `rel="noopener noreferrer"` to 214 external links | Phase 1 | Yes |
+| 2026-04-20 | Added `loading="lazy"` to 198 artwork images | Phase 1 | Yes |
+| 2026-04-20 | Added meta description and Open Graph tags to all pages | Phase 1 | Yes |
+| 2026-04-20 | Replaced inline image styles with CSS classes | Phase 1 | Yes |
 | | | | |
