@@ -1,12 +1,15 @@
-/* General reset */
+/* ======================== */
+/* RESET & BASE            */
+/* ======================== */
+
 body, html {
     margin: 0;
     padding: 0;
     height: 100vh;
     box-sizing: border-box;
-    font-family: Helvetica, Arial, sans-serif; /* Use Helvetica as the main font */
-    color: #333; /* Dark gray text */
-    background-color: #fff; /* White background */
+    font-family: Helvetica, Arial, sans-serif;
+    color: #333;
+    background-color: #fff;
     overflow: hidden;
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
@@ -27,73 +30,6 @@ body.fade-out a {
     opacity: 0.5;
 }
 
-
-/* Desktop Layout Styles */
-.desktop-layout {
-    display: block; /* Default: show on larger screens */
-}
-  
-.mobile-layout {
-    display: none; /* Default: hide on larger screens */
-}
-  
-  /* Mobile-specific styles */
-  @media (max-width: 768px) {
-    .desktop-layout {
-        display: none; /* Hide desktop layout */
-    }
-  
-    .mobile-layout {
-        overflow-y:auto;
-        display: block; /* Show mobile layout */
-    }
-  }
-
-
-
-/* Container for layout */
-.container {
-    display: grid;
-    grid-template-columns: 2fr 5fr; /* Bio panel (2/7) and main panel (5/7) */
-    height: 100vh; /* Full viewport height */
-}
-
-/* Bio Section */
-.bio {
-    background-color: #eee; /* Light blue for visualization */
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    overflow-y:auto;
-}
-
-.bio-image {
-    background-color: #fff; /* Placeholder background color */
-    max-width: 350px; /* Sets a maximum width for the image */
-    height: auto; /* Maintains the aspect ratio */
-    display: block; /* Removes extra inline space */
-}
-
-.bio-image-placeholder {
-    background-color: #eee;
-    max-width: 350px;
-    height: auto;
-    display: block;
-}
-
-.bio-items {
-    /* background-color: #eee; */
-    display: flex;
-    flex-direction: column; /* Stack links vertically */
-    justify-content: space-between; /* Spread items evenly across the height */
-    height: 50%; /* Use the full height of the bio section */
-    list-style: none; /* Remove default list styles */
-    margin: 1.5rem; /* Remove extra margin from the <ul> */
-    text-align:right;
-}
-
 h1 {
     font-size: 20px;
     line-height: 125%;
@@ -106,6 +42,121 @@ h4 {
 
 h1:hover {
     background-color: #ddd;
+}
+
+
+/* ======================== */
+/* LAYOUT: DESKTOP/MOBILE   */
+/* ======================== */
+
+.desktop-layout {
+    display: block;
+}
+
+.mobile-layout {
+    display: none;
+}
+
+/* Items only shown on desktop */
+.desktop-only {
+    display: block;
+}
+
+/* Items only shown on mobile */
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop-layout {
+        display: none;
+    }
+
+    .mobile-layout {
+        overflow-y:auto;
+        display: block;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    /* On mobile, scrollbox containers stack vertically */
+    .scrollbox-container {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0;
+    }
+
+    /* Bio sidebar becomes full-width on mobile */
+    .container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .bio {
+        padding: 1.5rem;
+    }
+
+    .bio-items {
+        text-align: center;
+        height: auto;
+    }
+
+    .bio-items #description {
+        width: 90%;
+        text-align: center;
+        margin: 0 auto 1rem auto;
+    }
+}
+
+
+/* ======================== */
+/* CONTAINER & BIO SIDEBAR  */
+/* ======================== */
+
+.container {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    height: 100vh;
+}
+
+.bio {
+    background-color: #eee;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow-y:auto;
+}
+
+.bio-image {
+    background-color: #fff;
+    max-width: 350px;
+    height: auto;
+    display: block;
+}
+
+.bio-image-placeholder {
+    background-color: #eee;
+    max-width: 350px;
+    height: auto;
+    display: block;
+}
+
+.bio-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+    list-style: none;
+    margin: 1.5rem;
+    text-align:right;
 }
 
 .bio-items p {
@@ -148,16 +199,15 @@ h1:hover {
 }
 
 .bio-items #links a {
-    text-decoration: none; /* Remove underlines */
-    color: #666; /* Link text color */
-    font-weight: bold; /* Bold text for visibility */
-    padding: 0.5rem; /* Add clickable space */
+    text-decoration: none;
+    color: #666;
+    font-weight: bold;
+    padding: 0.5rem;
     background-color: #eee;
     transition: background-color 0.3s ease;
     transition: color 0.9s ease;
 }
 
-/* Hover effect for links */
 .bio-items #links a:hover {
     background-color: #ddd;
     color: #333;
@@ -180,10 +230,10 @@ h1:hover {
 }
 
 .bio-links li a {
-    text-decoration: none; /* Remove underlines */
-    color: #666; /* Link text color */
-    font-weight: bold; /* Bold text for visibility */
-    padding: 0.5rem; /* Add clickable space */
+    text-decoration: none;
+    color: #666;
+    font-weight: bold;
+    padding: 0.5rem;
     background-color: #eee;
     transition: background-color 0.3s ease;
     transition: color 0.9s ease;
@@ -195,12 +245,15 @@ h1:hover {
 }
 
 
-/* Main Grid Section */
+/* ======================== */
+/* HOME PAGE GRID           */
+/* ======================== */
+
 .grid-container {
-    background-color: #fff; /* Light pink for visualization */
+    background-color: #fff;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
-    gap: 1rem; /* Equal spacing between rows and columns */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
     width: 75%;
     margin: 0 auto;
     align-items: center;
@@ -208,9 +261,9 @@ h1:hover {
 }
 
 .grid-item {
-    background-color: #eee; /* Light orange for visualization */
-    width: 200px; /* Size of the squares */
-    aspect-ratio: 1; /* Ensures squares remain perfectly square */
+    background-color: #eee;
+    width: 200px;
+    aspect-ratio: 1;
     display: flex;
     text-align: center;
     align-items: center;
@@ -225,9 +278,9 @@ h1:hover {
 }
 
 .grid-item-clear {
-    background-color: #fff; /* Light orange for visualization */
-    width: 200px; /* Size of the squares */
-    aspect-ratio: 1; /* Ensures squares remain perfectly square */
+    background-color: #fff;
+    width: 200px;
+    aspect-ratio: 1;
     display: flex;
     text-align: center;
     align-items: center;
@@ -243,7 +296,7 @@ h1:hover {
 .grid-item a:hover,
 .grid-item a:visited,
 .grid-item a:active {
-    color: #333 !important; /* Keep the same color for all states */
+    color: #333 !important;
     text-decoration-color: #333;
 }
 
@@ -260,46 +313,156 @@ h1:hover {
 }
 
 
-/* Scrollbox container: Flexbox for side-by-side alignment */
+/* ======================== */
+/* GALLERY SCROLLBOXES      */
+/* ======================== */
+
 .scrollbox-container {
-    display: flex; /* Arrange scrollboxes side by side */
-    gap: 2rem; /* Space between the scrollboxes */
+    display: flex;
+    gap: 2rem;
     padding: 2rem;
 }
 
-/* Scrollboxes */
 .scrollbox {
-    flex: 1; /* Make both scrollboxes equal in width */
-    max-height: 90vh; /* Limit height to ensure scrolling */
-    overflow-y: auto; /* Add vertical scrolling */
+    flex: 1;
+    max-height: 90vh;
+    overflow-y: auto;
     align-content: center;
     gap: 2rem;
     padding: 1rem;
-    background-color: #fff; /* Light background for contrast */
+    background-color: #fff;
 }
 
-/* Scrollbox container: Grid for square alignment */
+/* Panels page: 4-column grid */
 .panels-scrollbox-container {
-    display: grid; /* Switch to grid layout */
-    grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
-    grid-template-rows: repeat(2, 1fr); /* Two rows of equal height */
-    gap: 1.9rem; /* Space between scrollboxes */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1.9rem;
     padding: 2rem;
-    height: 90vh; /* Ensure container fills most of the vertical viewport */
+    height: 90vh;
 }
 
-/* Scrollboxes */
 .panels-scrollbox {
-    max-height: 100%; /* Ensure each scrollbox fills its grid cell height */
-    overflow-y: auto; /* Add vertical scrolling */
+    max-height: 100%;
+    overflow-y: auto;
     padding: 1rem;
-    background-color: #fff; /* Light background for contrast */
+    background-color: #fff;
 }
 
 
-/* Scrollbox items */
+/* ======================== */
+/* ARTWORK COMPONENTS       */
+/* ======================== */
+
+/*
+ * ARTWORK COMPONENT — How to add a new artwork:
+ *
+ * Horizontal artwork (landscape orientation):
+ *
+ *   <figure class="artwork artwork-horiz">
+ *       <a href="artworks/FOLDER/FILENAME.jpg" target="_blank" rel="noopener noreferrer">
+ *           <img loading="lazy" src="artworks/FOLDER/FILENAME.jpg">
+ *       </a>
+ *       <figcaption>
+ *           <span class="pink-dot"></span> <cite>title</cite>
+ *           <br><br>date
+ *           <br>medium, dimensions
+ *       </figcaption>
+ *   </figure>
+ *
+ * Vertical artwork (portrait orientation):
+ *
+ *   <figure class="artwork artwork-vert">
+ *       <a href="artworks/FOLDER/FILENAME.jpg" target="_blank" rel="noopener noreferrer">
+ *           <img loading="lazy" src="artworks/FOLDER/FILENAME.jpg">
+ *       </a>
+ *       <figcaption>
+ *           <span class="pink-dot"></span> <cite>title</cite>
+ *           <br><br>date
+ *           <br>medium, dimensions
+ *       </figcaption>
+ *   </figure>
+ *
+ * Use class="pink-dot" if available, "gray-dot" if not.
+ * Add class="desktop-only" to the <figure> to hide on mobile.
+ */
+
+/* Base artwork component */
+.artwork {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+    margin: 0;
+    font-size: 85%;
+}
+
+.artwork img {
+    width: 100%;
+    height: auto;
+}
+
+.artwork figcaption {
+    text-align: center;
+    line-height: 133%;
+    margin-top: 1rem;
+    width: 95%;
+}
+
+/* Horizontal artwork: image on top, caption below */
+.artwork-horiz {
+    flex-direction: column;
+}
+
+.artwork-horiz img {
+    width: 95%;
+}
+
+.artwork-horiz figcaption {
+    width: 95%;
+}
+
+/* Vertical artwork: image and caption side by side */
+.artwork-vert {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.artwork-vert img {
+    width: 70%;
+}
+
+.artwork-vert figcaption {
+    width: 30%;
+    margin: 1rem;
+    text-align: center;
+}
+
+/* Vertical artwork with caption on left (image on right) */
+.artwork-vert-left figcaption {
+    order: -1;
+}
+
+@media (max-width: 768px) {
+    /* On mobile, vertical artworks stack like horizontal ones */
+    .artwork-vert {
+        flex-direction: column;
+    }
+
+    .artwork-vert img {
+        width: 95%;
+    }
+
+    .artwork-vert figcaption {
+        width: 95%;
+    }
+}
+
+/* Legacy support: keep old table-based scroll-items working
+   during incremental migration */
 .scroll-item {
-    /* background-color: green; */
     font-size: 85%;
     display:flex;
     flex-direction: column;
@@ -307,22 +470,22 @@ h1:hover {
 }
 
 table {
-    margin: 0 auto; /* Centers the table itself horizontally in its container */
-    border-collapse: collapse; /* Optional: Removes spacing between table cells */
+    margin: 0 auto;
+    border-collapse: collapse;
 }
 
 td {
-    text-align: center; /* Centers the text horizontally inside cells */
-    vertical-align: middle; /* Centers the text vertically inside cells */
-    padding: 10px; /* Optional: Adds padding inside cells */
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
 }
+
 .scroll-item img {
     width: 100%;
     height:auto;
 }
 
 #vert-description {
-    /* background-color: blue; */
     width: 30%;
     margin: 1rem;
     line-height:133%;
@@ -331,7 +494,6 @@ td {
 }
 
 #horiz-description {
-    /* background-color: blue; */
     width: 95%;
     margin: 1rem;
     line-height:133%;
@@ -340,7 +502,6 @@ td {
 }
 
 #horiz-image {
-    /* background-color: red; */
     width: 95%;
     height:auto;
     align-items:center;
@@ -348,33 +509,41 @@ td {
 }
 
 #vert-image {
-    /* background-color: red; */
     width: 70%;
     height:auto;
     align-items:center;
 }
 
-/* Artwork image size classes (replaces inline styles) */
+
+/* ======================== */
+/* ARTWORK SIZE VARIANTS    */
+/* ======================== */
+
 .artwork-tall    { width: auto; height: 90vh; }
 .artwork-wide    { width: 68.5%; height: auto; }
 .artwork-medium  { width: 70%; height: auto; }
 
+
+/* ======================== */
+/* INDICATORS               */
+/* ======================== */
+
 .pink-dot {
     display: inline-block;
-    width: 8px; /* Adjust size */
+    width: 8px;
     height: 8px;
-    background-color: #ff459f; /* Change color */
-    border-radius: 50%; /* Makes it a circle */
+    background-color: #ff459f;
+    border-radius: 50%;
     margin-right: 2px;
     vertical-align: middle;
-  }
+}
 
 .gray-dot {
     display: inline-block;
-    width: 8px; /* Adjust size */
+    width: 8px;
     height: 8px;
-    background-color: #909090; /* Change color */
-    border-radius: 50%; /* Makes it a circle */
+    background-color: #909090;
+    border-radius: 50%;
     margin-right: 2px;
     vertical-align: middle;
-  }
+}

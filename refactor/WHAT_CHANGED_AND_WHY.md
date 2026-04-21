@@ -78,3 +78,88 @@ A plain-English log of every change made during the refactor, so the client alwa
 **UI impact:** None. Images display at exactly the same sizes as before.
 
 ---
+
+### Phase 2, Step 1 — Consolidated desktop/mobile HTML into single markup
+**What:** On 4 gallery pages (grids, recreations, self, misc), removed the duplicate mobile HTML section. Content now lives in one place. Items that Pavel intentionally hid on mobile are marked with a `desktop-only` CSS class so they stay hidden on small screens.
+
+Two pages kept their desktop/mobile split because mobile has a fundamentally different experience:
+- `index.html` — desktop shows a grid of squares, mobile shows a text list
+- `panels.html` — desktop shows 82 artworks in 4 columns, mobile shows a message directing users to desktop
+
+Two pages (`appreciation.html`, `feeling.html`) never had the split to begin with.
+
+**Why:** Previously, every content update (adding an artwork, fixing a typo) had to be done in two places. Now it's done once. This cuts maintenance effort in half and eliminates the risk of desktop and mobile falling out of sync.
+
+**Files changed:** grids.html, recreations.html, self.html, misc.html
+
+**UI impact:** None. Desktop and mobile views render the same content as before.
+
+---
+
+### Phase 2, Step 2 — Replaced all layout tables with figure components
+**What:** Replaced all 165 `<table>` elements across every gallery page with clean `<figure>` elements. Each artwork is now:
+
+```html
+<figure class="artwork artwork-horiz">
+    <a href="artworks/folder/file.jpg" target="_blank" rel="noopener noreferrer">
+        <img loading="lazy" src="artworks/folder/file.jpg">
+    </a>
+    <figcaption>
+        <cite>title</cite>
+        <br><br>date
+        <br>medium, dimensions
+    </figcaption>
+</figure>
+```
+
+Three variants: `artwork-horiz` (landscape), `artwork-vert` (portrait, caption beside image), `artwork-vert-left` (portrait, caption on left).
+
+**To add a new artwork:** Copy any `<figure>` block, change the image path and caption text. That's it. No tables, no complex nesting.
+
+**Why:** Tables are meant for tabular data, not image layouts. The old table markup was ~12 lines per artwork with nested `<tr>`, `<td>`, and IDs. The new figure markup is ~8 lines with clear, readable structure. This makes it much easier for the client to add, remove, or reorder artworks.
+
+**Files changed:** All 7 gallery pages (grids.html, recreations.html, feeling.html, self.html, panels.html, appreciation.html, misc.html)
+
+**UI impact:** None. Artworks display in the same positions with the same spacing.
+
+---
+
+### Phase 2, Step 3 — Added semantic HTML elements
+**What:** Added proper HTML5 semantic elements across all pages:
+- `<nav>` wraps all navigation links
+- `<main>` wraps gallery content (replaces `<section class="main-content">`)
+- `<cite>` wraps artwork titles (replaces `<b><i>`)
+- `<figcaption>` wraps artwork descriptions (replaces `<td>`)
+
+Also fixed the improperly nested `</div></a>` on the homepage grid (was `<div><a>...</div></a>`, now `<div><a>...</a></div>`).
+
+**Why:** Semantic HTML tells browsers and search engines what each part of the page means. `<nav>` says "this is navigation," `<figure>` says "this is an artwork," `<cite>` says "this is the title of a creative work." This improves search engine indexing and makes the code self-documenting.
+
+**Files changed:** All 8 HTML files
+
+**UI impact:** None. Semantic elements are invisible — they describe meaning, not appearance.
+
+---
+
+### Phase 2, Step 4 — Organized CSS with sections and artwork component
+**What:** Reorganized `index.css` into clearly labeled sections:
+- Reset & Base
+- Layout: Desktop/Mobile (includes new `.desktop-only` / `.mobile-only` utility classes)
+- Container & Bio Sidebar
+- Home Page Grid
+- Gallery Scrollboxes
+- Artwork Components (new)
+- Artwork Size Variants
+- Indicators
+
+Added a detailed comment block in the Artwork Components section explaining how to add a new artwork — with copy-paste examples for horizontal and vertical layouts.
+
+Kept all legacy table/scroll-item styles marked as "legacy support" so nothing breaks during incremental migration.
+
+**Why:** The CSS was a single undivided 375-line file. Now it's organized by purpose with clear section headers, making it easy to find and modify styles. The artwork component comment serves as inline documentation for the client.
+
+**Files changed:** index.css
+
+**UI impact:** None. No visual properties were changed, only organization.
+
+---

@@ -68,4 +68,8 @@ Optional. Only after Phase 1 and 2 are done and verified.
 | 2026-04-20 | Added `loading="lazy"` to 198 artwork images | Phase 1 | Yes |
 | 2026-04-20 | Added meta description and Open Graph tags to all pages | Phase 1 | Yes |
 | 2026-04-20 | Replaced inline image styles with CSS classes | Phase 1 | Yes |
+| 2026-04-21 | Consolidated desktop/mobile HTML on 4 pages | Phase 2 | Yes |
+| 2026-04-21 | Replaced 165 layout tables with figure components | Phase 2 | Yes |
+| 2026-04-21 | Added semantic HTML (nav, main, figure, cite) | Phase 2 | Yes |
+| 2026-04-21 | Organized CSS with sections and component docs | Phase 2 | Yes |
 | | | | |
