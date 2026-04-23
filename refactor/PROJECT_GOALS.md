@@ -75,4 +75,5 @@ Optional. Only after Phase 1 and 2 are done and verified.
 | 2026-04-22 | Made all artworks visible on mobile (all pages) | Mobile | Yes |
 | 2026-04-22 | Added missing mobile nav links (feeling, appreciation) | Mobile | Yes |
 | 2026-04-22 | Made panels page scrollable on mobile (82 artworks) | Mobile | Yes |
+| 2026-04-22 | Compressed all 183 images: 318 MB → 92 MB (71% reduction) | Phase 3 | Yes |
 | | | | |

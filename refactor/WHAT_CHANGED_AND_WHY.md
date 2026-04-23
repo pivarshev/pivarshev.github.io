@@ -184,3 +184,30 @@ Kept all legacy table/scroll-item styles marked as "legacy support" so nothing b
 **UI impact:** Mobile now shows MORE content than before. Desktop is unchanged. No existing content was removed or rearranged — only previously hidden items are now visible.
 
 ---
+
+### Image optimization — Compressed all artwork images
+**What:** Resized all 183 artwork images to reduce file sizes:
+
+- Gallery images (appreciation, feeling, grids, misc, recreations, self): resized so longest edge is max 2000px
+- Individual panel images (82 files): resized so longest edge is max 1200px (these display smaller in a multi-column grid)
+- Thumbnail files (`_thumb.jpg`) were already small and left unchanged
+
+Results by directory:
+- appreciation: 36 MB → 4.4 MB
+- feeling: 42 MB → 11 MB
+- grids: 26 MB → 8.8 MB
+- individual panels: 100 MB → 29 MB
+- misc: 25 MB → 8.1 MB
+- recreations: 47 MB → 15 MB
+- self: 30 MB → 9.5 MB
+- **Total: 318 MB → 92 MB (71% reduction)**
+
+Some images were extremely oversized — for example, `shailen.jpg` in appreciation was 14,138 x 11,213 pixels (7.9 MB). Now it's 2,000 x 1,586 pixels (808 KB). 2000px is more than enough for any screen.
+
+**Why:** Large images are the #1 cause of slow page loads. The panels page alone was loading 100 MB of images. Combined with the lazy loading added in Phase 1, pages should now load significantly faster — especially on mobile connections.
+
+**Files changed:** All 183 image files in the artworks/ directory
+
+**UI impact:** Images display at exactly the same size on screen. The only difference is faster loading. At 2000px max width, images remain sharp on high-DPI (Retina) displays.
+
+---
