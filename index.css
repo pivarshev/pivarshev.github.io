@@ -112,6 +112,20 @@ h1:hover {
         text-align: center;
         margin: 0 auto 1rem auto;
     }
+
+    /* Panels page: collapse 4-column grid to single column */
+    .panels-scrollbox-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .panels-scrollbox {
+        max-height: none;
+        overflow-y: visible;
+    }
 }
 
 

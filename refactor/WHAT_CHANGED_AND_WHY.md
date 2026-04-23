@@ -163,3 +163,24 @@ Kept all legacy table/scroll-item styles marked as "legacy support" so nothing b
 **UI impact:** None. No visual properties were changed, only organization.
 
 ---
+
+### Mobile update — All artworks now visible on mobile
+**What:** Made every artwork visible on mobile across all pages:
+
+1. **recreations.html** — removed `desktop-only` from 6 artworks (dimension demos, swan maidens, eight bells, eternal love). All 20+ recreations now visible on mobile.
+
+2. **self.html** — removed `desktop-only` from 3 artworks (and you can dance, stamp collector, untitled polyethylene). All 13 self-portraits now visible on mobile.
+
+3. **misc.html** — removed `desktop-only` from 2 artworks (things to do, ascendant attendant). All 12 miscellaneous works now visible on mobile.
+
+4. **panels.html** — removed the mobile "view on desktop" message entirely. The 4-column grid now collapses into a single scrollable column on mobile, showing all 82 individual panels. Added CSS media query for `panels-scrollbox-container` to stack vertically.
+
+5. **index.html** — added missing links to mobile navigation: "feeling (2020-21)" and "appreciation (2021-22)". Moved "individual panels" to bottom of project list. Removed the "see more art in desktop view" note since all content is now available on mobile.
+
+**Why:** The client wants the mobile experience to be fully representative of the site. Previously, mobile visitors were seeing a curated subset — missing up to 11 artworks per page, and the entire panels collection was hidden. Now every visitor sees the complete portfolio regardless of device.
+
+**Files changed:** index.html, index.css, recreations.html, self.html, misc.html, panels.html
+
+**UI impact:** Mobile now shows MORE content than before. Desktop is unchanged. No existing content was removed or rearranged — only previously hidden items are now visible.
+
+---

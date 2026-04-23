@@ -72,4 +72,7 @@ Optional. Only after Phase 1 and 2 are done and verified.
 | 2026-04-21 | Replaced 165 layout tables with figure components | Phase 2 | Yes |
 | 2026-04-21 | Added semantic HTML (nav, main, figure, cite) | Phase 2 | Yes |
 | 2026-04-21 | Organized CSS with sections and component docs | Phase 2 | Yes |
+| 2026-04-22 | Made all artworks visible on mobile (all pages) | Mobile | Yes |
+| 2026-04-22 | Added missing mobile nav links (feeling, appreciation) | Mobile | Yes |
+| 2026-04-22 | Made panels page scrollable on mobile (82 artworks) | Mobile | Yes |
 | | | | |
