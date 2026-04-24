@@ -49,6 +49,7 @@ h1:hover {
 .bio-links h1 {
     pointer-events: none;
     user-select: none;
+    margin: 0.3rem 0;
 }
 
 
