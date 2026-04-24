@@ -646,6 +646,10 @@ td {
         padding: 0 5%;
     }
 
+    .artwork-vert-left figcaption {
+        order: 0;
+    }
+
     /* Bottom nav */
     .mobile-bottom-nav {
         display: flex;
