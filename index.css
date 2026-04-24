@@ -93,9 +93,16 @@ h1:hover {
         display: block;
     }
 
+    /* Let the page be as tall as its content */
+    body, html {
+        height: auto;
+        overflow: visible;
+        overflow-y: visible;
+    }
+
     /* Single column layout — one continuous scroll */
     .container {
-        grid-template-columns: 1fr;
+        display: block;
         height: auto;
     }
 
