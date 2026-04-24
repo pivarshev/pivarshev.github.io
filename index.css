@@ -61,6 +61,10 @@ h1:hover {
     display: none;
 }
 
+.mobile-contact-grid {
+    display: none;
+}
+
 /* Items only shown on desktop */
 .desktop-only {
     display: block;
@@ -143,6 +147,23 @@ h1:hover {
         color: #666;
         font-weight: bold;
         padding: 0.5rem;
+    }
+
+    /* Mobile homepage: 2x2 contact grid below the dot */
+    .mobile-contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .mobile-contact-grid a {
+        text-decoration: none;
+        color: #666;
+        font-weight: bold;
+        padding: 0.5rem;
+        background-color: #eee;
     }
 
     /* Scrollboxes: no height cap, no separate scroll */

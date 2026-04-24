@@ -258,3 +258,21 @@ Previously on mobile, the two-column desktop layout (gray bio sidebar on left, s
 **UI impact:** Mobile gallery pages now use a clean single-column layout. Desktop is completely unchanged.
 
 ---
+
+### Mobile homepage — Contact links in 2x2 grid
+**What:** On the mobile homepage, moved the contact links (c.v., email, linkedin, instagram) out of the vertical list and into a 2x2 grid below the dot divider:
+
+```
+  c.v.      |    email
+  linkedin  |  instagram
+```
+
+Each link sits in a gray box, matching the site's style.
+
+**Why:** The vertical list was getting long and pushing contact links below the fold. A 2x2 grid is compact and easy to tap.
+
+**Files changed:** index.html, index.css
+
+**UI impact:** Mobile homepage only. Contact links are now in a grid instead of a vertical list. Desktop unchanged.
+
+---
