@@ -710,6 +710,26 @@ td {
         order: 0;
     }
 
+    /* Single-scroll gallery: remove desktop constraints on mobile */
+    .single-scroll-gallery {
+        max-height: none;
+        overflow-y: visible;
+        padding: 0;
+    }
+
+    .single-scroll-gallery .artwork {
+        max-width: none;
+    }
+
+    .single-scroll-gallery .artwork img {
+        width: 100%;
+    }
+
+    .single-scroll-gallery .artwork figcaption {
+        width: 90%;
+        padding: 0 5%;
+    }
+
     /* Bottom nav */
     .mobile-bottom-nav {
         display: flex;
