@@ -49,7 +49,12 @@ h1:hover {
 .bio-links h1 {
     pointer-events: none;
     user-select: none;
-    margin: 0.3rem 0;
+    margin: 0;
+}
+
+/* Reduce gap between name and dot (h4 has larger line-height) */
+.bio-links h4 {
+    margin-bottom: -0.35rem;
 }
 
 
