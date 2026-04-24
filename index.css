@@ -511,6 +511,8 @@ td {
 
     .mobile-layout {
         display: block;
+        background-color: #eee;
+        min-height: 100vh;
     }
 
     .desktop-only {
@@ -560,11 +562,20 @@ td {
         width: 90%;
         text-align: center;
         margin: 0 auto 1rem auto;
+    }
+
+    /* Gallery pages: white bg on bio items */
+    .container .bio-items li {
         background-color: #fff;
     }
 
-    .bio-items li {
+    .container .bio-items #description {
         background-color: #fff;
+    }
+
+    /* Homepage: keep gray bg on bio items */
+    .mobile-layout .bio-links li {
+        background-color: #eee;
     }
 
     /* Hide the sidebar back link — it's at the bottom now */
