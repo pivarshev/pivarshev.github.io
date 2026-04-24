@@ -530,11 +530,21 @@ td {
 .single-scroll-gallery .artwork {
     max-width: 800px;
     margin: 0 auto;
+    flex-direction: column;
 }
 
 .single-scroll-gallery .artwork img {
     width: 100%;
     height: auto;
+}
+
+.single-scroll-gallery .artwork figcaption {
+    width: 95%;
+    order: 1;
+}
+
+.single-scroll-gallery .artwork a {
+    order: 0;
 }
 
 
