@@ -6,64 +6,64 @@
     <title>pavel pivarshev</title>
     <link rel="icon" href="icon.png">
     <style>
+        * { margin: 0; padding: 0; }
         body {
-            margin: 0;
             background: #eee;
-            min-height: 100vh;
             cursor: pointer;
-            overflow: auto;
-            display: block;
-            text-align: center;
+            min-height: 100vh;
         }
-        body::before {
-            content: '';
-            display: inline-block;
-            height: 100vh;
-            vertical-align: middle;
+        .fit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
-        img {
+        .fit img {
             max-width: 95vw;
             max-height: 95vh;
-            object-fit: contain;
             cursor: zoom-in;
-            vertical-align: middle;
         }
-        img.zoomed {
-            max-width: none;
-            max-height: none;
+        .full img {
             cursor: zoom-out;
         }
     </style>
 </head>
 <body>
-    <img id="artwork" src="" alt="">
+    <div id="wrap" class="fit">
+        <img id="artwork" src="" alt="">
+    </div>
     <script>
         var params = new URLSearchParams(window.location.search);
         var src = params.get('img');
         var img = document.getElementById('artwork');
-        if (src) {
-            img.src = src;
-        }
+        var wrap = document.getElementById('wrap');
+        if (src) img.src = src;
 
-        // Click image = toggle zoom, centering on click point
+        var zoomed = false;
+
         img.addEventListener('click', function (e) {
             e.stopPropagation();
-            var wasZoomed = img.classList.contains('zoomed');
-            img.classList.toggle('zoomed');
 
-            if (!wasZoomed) {
-                // Zooming in: scroll to the clicked spot
+            if (!zoomed) {
+                // Calculate where on the image was clicked (0-1)
                 var rect = img.getBoundingClientRect();
-                var clickX = (e.clientX - rect.left) / rect.width;
-                var clickY = (e.clientY - rect.top) / rect.height;
+                var pctX = (e.clientX - rect.left) / rect.width;
+                var pctY = (e.clientY - rect.top) / rect.height;
 
+                // Switch to full size
+                wrap.className = 'full';
+                zoomed = true;
+
+                // After layout updates, scroll to the clicked spot
                 requestAnimationFrame(function () {
-                    var scrollX = (img.offsetWidth * clickX) - (window.innerWidth / 2);
-                    var scrollY = (img.offsetHeight * clickY) - (window.innerHeight / 2);
-                    window.scrollTo(scrollX, scrollY);
+                    var targetX = (img.naturalWidth * pctX) - (window.innerWidth / 2);
+                    var targetY = (img.naturalHeight * pctY) - (window.innerHeight / 2);
+                    window.scrollTo(targetX, targetY);
                 });
             } else {
-                // Zooming out: reset scroll
+                // Zoom out
+                wrap.className = 'fit';
+                zoomed = false;
                 window.scrollTo(0, 0);
             }
         });
