@@ -286,6 +286,19 @@ h1:hover {
     color: #fff;
 }
 
+.grid-item small a {
+    color: #999;
+    font-weight: normal;
+    font-size: 12px;
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+}
+
+.grid-item small a:hover {
+    color: #333;
+}
+
 
 /* ======================== */
 /* GALLERY SCROLLBOXES      */
@@ -500,6 +513,28 @@ td {
     border-radius: 50%;
     margin-right: 2px;
     vertical-align: middle;
+}
+
+
+/* ======================== */
+/* SINGLE SCROLL GALLERY    */
+/* (used on "new" pages)    */
+/* ======================== */
+
+.single-scroll-gallery {
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.single-scroll-gallery .artwork {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.single-scroll-gallery .artwork img {
+    width: 100%;
+    height: auto;
 }
 
 
