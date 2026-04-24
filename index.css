@@ -153,17 +153,8 @@ h1:hover {
     .mobile-contact-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 0.8rem;
+        gap: 0.5rem;
         text-align: center;
-        padding: 0 1rem;
-    }
-
-    .mobile-contact-grid a {
-        text-decoration: none;
-        color: #666;
-        font-weight: bold;
-        padding: 0.5rem;
-        background-color: #eee;
     }
 
     /* Scrollboxes: no height cap, no separate scroll */
