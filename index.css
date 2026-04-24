@@ -156,11 +156,11 @@ h1:hover {
         padding: 0.5rem;
     }
 
-    /* Mobile homepage: 2x2 contact grid below the dot */
+    /* Mobile homepage: contact links in one row */
     .mobile-contact-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
         text-align: center;
     }
 
