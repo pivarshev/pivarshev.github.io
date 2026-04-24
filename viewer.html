@@ -9,19 +9,24 @@
         body {
             margin: 0;
             background: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             min-height: 100vh;
             cursor: pointer;
             overflow: auto;
+            display: block;
+            text-align: center;
+        }
+        body::before {
+            content: '';
+            display: inline-block;
+            height: 100vh;
+            vertical-align: middle;
         }
         img {
             max-width: 95vw;
             max-height: 95vh;
             object-fit: contain;
             cursor: zoom-in;
-            transition: max-width 0.2s, max-height 0.2s;
+            vertical-align: middle;
         }
         img.zoomed {
             max-width: none;
