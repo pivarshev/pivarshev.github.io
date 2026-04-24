@@ -3,20 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pavel pivarshev / miscellaneous</title>
-    <meta name="description" content="Pavel Pivarshev — Miscellaneous works — portraits, commissions, and more.">
-    <meta property="og:title" content="Pavel Pivarshev — miscellaneous">
-    <meta property="og:description" content="Miscellaneous works — portraits, commissions, and more.">
-    <meta property="og:image" content="newpavel.png">
-    <meta property="og:type" content="website">
+    <title>pavel pivarshev / miscellaneous (new)</title>
     <link rel="icon" href="icon.png">
-    <link rel="stylesheet" href="index.css?v=30">
+    <link rel="stylesheet" href="index.css?v=31">
 </head>
-
 <body>
-
     <div class="container">
-        <!-- Bio Sidebar -->
         <aside class="bio">
             <img class="bio-image-placeholder">
             <div class="bio-items">
@@ -33,18 +25,7 @@
                 </nav>
             </div>
         </aside>
-
-        <!-- Gallery -->
-        <main>
-            <div class="scrollbox-container">
-
-                <!-- Column 1 -->
-                <div class="scrollbox">
-
-                    <!-- To add a new artwork: copy any <figure> block below,
-                         change the image path, title, date, and medium.
-                         Use class="artwork-horiz" for landscape, "artwork-vert" for portrait.
-                         Use class="desktop-only" to hide on mobile. -->
+        <main class="single-scroll-gallery">
 
                     <figure class="artwork artwork-vert artwork-vert-left">
                         <a href="artworks_full/misc/ttd.jpg">
@@ -54,6 +35,19 @@
                             <cite>things to do, december 2025</cite>
                             <br><br>december 2025
                             <br>stuff on wall, ~18"x~24"
+                        </figcaption>
+                    </figure>
+
+                    <figure class="artwork artwork-vert">
+                        <a href="artworks_full/misc/ascendant attendant.jpg">
+                            <img loading="lazy" src="artworks_small/misc/ascendant attendant.jpg">
+                        </a>
+                        <figcaption>
+                            <span class="gray-dot"></span> <cite>ascendant attendant</cite>
+                            <br>for <cite>car world museum</cite>
+                            <br><br>february 2024
+                            <br>oil on canvas
+                            <br>24"x36"
                         </figcaption>
                     </figure>
 
@@ -94,47 +88,6 @@
                     </figure>
 
                     <figure class="artwork artwork-horiz">
-                        <a href="artworks_full/misc/victoria.jpg">
-                            <img loading="lazy" src="artworks_small/misc/victoria.jpg">
-                        </a>
-                        <figcaption>
-                            <cite>victoria</cite>
-                            <br><br>february 2021
-                            <br>acrylic on canvas, 24"x18"
-                        </figcaption>
-                    </figure>
-
-                    <figure class="artwork artwork-vert">
-                        <a href="artworks_full/misc/hammer.jpg">
-                            <img loading="lazy" src="artworks_small/misc/hammer.jpg">
-                        </a>
-                        <figcaption>
-                            <span class="gray-dot"></span> <cite>hammer</cite>
-                            <br><br>january 2020
-                            <br>oil on canvas
-                            <br>18"x24"
-                        </figcaption>
-                    </figure>
-
-                </div>
-
-                <!-- Column 2 -->
-                <div class="scrollbox">
-
-                    <figure class="artwork artwork-vert">
-                        <a href="artworks_full/misc/ascendant attendant.jpg">
-                            <img loading="lazy" src="artworks_small/misc/ascendant attendant.jpg">
-                        </a>
-                        <figcaption>
-                            <span class="gray-dot"></span> <cite>ascendant attendant</cite>
-                            <br>for <cite>car world museum</cite>
-                            <br><br>february 2024
-                            <br>oil on canvas
-                            <br>24"x36"
-                        </figcaption>
-                    </figure>
-
-                    <figure class="artwork artwork-horiz">
                         <a href="artworks_full/misc/in_bed.jpg">
                             <img loading="lazy" src="artworks_small/misc/in_bed.jpg">
                         </a>
@@ -142,6 +95,17 @@
                             <span class="gray-dot"></span> <cite>...in bed</cite>
                             <br><br>may 2021
                             <br>watercolor on paper, 8.7"x5.9"
+                        </figcaption>
+                    </figure>
+
+                    <figure class="artwork artwork-horiz">
+                        <a href="artworks_full/misc/victoria.jpg">
+                            <img loading="lazy" src="artworks_small/misc/victoria.jpg">
+                        </a>
+                        <figcaption>
+                            <cite>victoria</cite>
+                            <br><br>february 2021
+                            <br>acrylic on canvas, 24"x18"
                         </figcaption>
                     </figure>
 
@@ -179,6 +143,18 @@
                         </figcaption>
                     </figure>
 
+                    <figure class="artwork artwork-vert">
+                        <a href="artworks_full/misc/hammer.jpg">
+                            <img loading="lazy" src="artworks_small/misc/hammer.jpg">
+                        </a>
+                        <figcaption>
+                            <span class="gray-dot"></span> <cite>hammer</cite>
+                            <br><br>january 2020
+                            <br>oil on canvas
+                            <br>18"x24"
+                        </figcaption>
+                    </figure>
+
                     <figure class="artwork artwork-horiz">
                         <a href="artworks_full/misc/beach.jpg">
                             <img loading="lazy" src="artworks_small/misc/beach.jpg">
@@ -190,19 +166,12 @@
                         </figcaption>
                     </figure>
 
-                </div>
-
-            </div>
         </main>
-
     </div>
-
     <nav class="mobile-bottom-nav">
         <a class="nav-link" href="index.html">&lt; &lt; &lt;</a>
     </nav>
-
     <script src="index.js"></script>
     <script src="upgrade-images.js"></script>
-
 </body>
 </html>
