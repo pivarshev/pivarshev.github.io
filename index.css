@@ -62,7 +62,10 @@ h1:hover {
 }
 
 .mobile-contact-grid {
-    display: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
 }
 
 .desktop-only {
