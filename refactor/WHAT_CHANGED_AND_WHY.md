@@ -230,13 +230,13 @@ CSS changes in the mobile media query:
 
 ---
 
-### Mobile fix — Compact homepage to fit on iPhone screen
-**What:** Tightened the mobile homepage layout so all links (projects + c.v./email/instagram/linkedin) fit on a single iPhone 16 screen without scrolling. Removed `<br><br>` spacer tags between every link and replaced with CSS gap/padding for consistent, compact spacing. Reduced excess top padding.
+### Mobile fix — Reduce top padding on homepage
+**What:** Reduced the top padding on the mobile homepage from 3rem to 1rem. Kept all original spacing between links exactly as before. This shifts everything up so the contact links (c.v., email, instagram, linkedin) are less likely to be cut off below the fold.
 
-**Why:** The email, instagram, and linkedin links were pushed below the fold by excessive spacing. Visitors shouldn't have to scroll just to find contact links on the homepage.
+**Why:** The email, instagram, and linkedin links were pushed below the fold by excess top padding.
 
-**Files changed:** index.html, index.css
+**Files changed:** index.html
 
-**UI impact:** Mobile homepage only. Links are closer together but still easily tappable. All content fits on one screen. Desktop unchanged.
+**UI impact:** Mobile homepage only. Everything shifts up slightly. Spacing between items unchanged. Desktop unchanged.
 
 ---
