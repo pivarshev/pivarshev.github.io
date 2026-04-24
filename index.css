@@ -534,20 +534,28 @@ td {
 .single-scroll-gallery .artwork {
     flex-direction: column;
     margin: 0;
+    padding-bottom: 0;
+}
+
+.single-scroll-gallery .artwork a {
+    order: 0;
+    width: 100%;
 }
 
 .single-scroll-gallery .artwork img {
     width: 100%;
     height: auto;
+    display: block;
 }
 
 .single-scroll-gallery .artwork figcaption {
-    width: 95%;
+    width: 100%;
     order: 1;
-}
-
-.single-scroll-gallery .artwork a {
-    order: 0;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+    text-align: center;
+    line-height: 133%;
+    font-size: 85%;
 }
 
 
