@@ -45,10 +45,27 @@
             img.src = src;
         }
 
-        // Click image = toggle zoom
+        // Click image = toggle zoom, centering on click point
         img.addEventListener('click', function (e) {
             e.stopPropagation();
+            var wasZoomed = img.classList.contains('zoomed');
             img.classList.toggle('zoomed');
+
+            if (!wasZoomed) {
+                // Zooming in: scroll to the clicked spot
+                var rect = img.getBoundingClientRect();
+                var clickX = (e.clientX - rect.left) / rect.width;
+                var clickY = (e.clientY - rect.top) / rect.height;
+
+                requestAnimationFrame(function () {
+                    var scrollX = (img.offsetWidth * clickX) - (window.innerWidth / 2);
+                    var scrollY = (img.offsetHeight * clickY) - (window.innerHeight / 2);
+                    window.scrollTo(scrollX, scrollY);
+                });
+            } else {
+                // Zooming out: reset scroll
+                window.scrollTo(0, 0);
+            }
         });
 
         // Click outside image = go back
