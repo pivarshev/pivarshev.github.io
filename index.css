@@ -652,6 +652,10 @@ td {
     }
 
     .artwork-vert-left figcaption {
+        order: 1;
+    }
+
+    .artwork-vert-left a {
         order: 0;
     }
 
