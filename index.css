@@ -57,6 +57,10 @@ h1:hover {
     display: none;
 }
 
+.mobile-bottom-nav {
+    display: none;
+}
+
 /* Items only shown on desktop */
 .desktop-only {
     display: block;
@@ -91,22 +95,54 @@ h1:hover {
         height: auto;
     }
 
-    /* Bio: no separate scroll, just flows as content */
+    /* Bio: compact text block at top, no gray sidebar feel */
     .bio {
-        padding: 1.5rem;
+        padding: 1rem 1.5rem;
         overflow-y: visible;
         justify-content: flex-start;
+        background-color: #fff;
+    }
+
+    .bio-image-placeholder {
+        display: none;
     }
 
     .bio-items {
         text-align: center;
         height: auto;
+        margin: 0;
+    }
+
+    .bio-items #title {
+        width: auto;
+        text-align: center;
+        margin: 0 auto;
     }
 
     .bio-items #description {
         width: 90%;
         text-align: center;
         margin: 0 auto 1rem auto;
+    }
+
+    /* Hide back link from top on mobile — it goes at the bottom */
+    .bio-items #links {
+        display: none;
+    }
+
+    /* Bottom nav for mobile */
+    .mobile-bottom-nav {
+        display: flex;
+        justify-content: center;
+        padding: 2rem 1rem;
+        background-color: #eee;
+    }
+
+    .mobile-bottom-nav a {
+        text-decoration: none;
+        color: #666;
+        font-weight: bold;
+        padding: 0.5rem;
     }
 
     /* Scrollboxes: no height cap, no separate scroll */

@@ -240,3 +240,21 @@ CSS changes in the mobile media query:
 **UI impact:** Mobile homepage only. Everything shifts up slightly. Spacing between items unchanged. Desktop unchanged.
 
 ---
+
+### Mobile fix — Single column layout on gallery pages
+**What:** On mobile, gallery pages now show as one single scrollable column:
+1. Description text at the top (white background, no gray sidebar)
+2. All artwork photos and captions below, in one scroll
+3. Back link (< < <) at the bottom
+
+Previously on mobile, the two-column desktop layout (gray bio sidebar on left, scrollable gallery on right) was being squeezed into a narrow phone screen. Now:
+- The gray bio sidebar background is removed on mobile (white instead)
+- The placeholder image in the sidebar is hidden
+- The back link is hidden from the top sidebar and moved to a bottom nav bar
+- Everything flows in one column, one scroll
+
+**Files changed:** index.css, misc.html, self.html, appreciation.html, grids.html, recreations.html, feeling.html, panels.html
+
+**UI impact:** Mobile gallery pages now use a clean single-column layout. Desktop is completely unchanged.
+
+---
