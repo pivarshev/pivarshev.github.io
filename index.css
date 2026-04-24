@@ -74,6 +74,10 @@ h1:hover {
     display: none;
 }
 
+.mobile-header {
+    display: none;
+}
+
 .mobile-contact-grid {
     display: flex;
     justify-content: center;
@@ -762,19 +766,31 @@ td {
         padding: 0.5rem;
     }
 
-    /* Homepage: stack image and nav tightly */
+    /* Homepage: start from top, not centered */
     .mobile-layout .bio {
-        justify-content: center;
+        justify-content: flex-start;
         gap: 0;
+    }
+
+    /* Photo + name side by side */
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .mobile-header h4 {
+        margin: 0;
     }
 
     /* Homepage hero image */
     .mobile-hero-image {
         display: block;
-        width: 150px;
-        height: 150px;
+        width: 80px;
+        height: 80px;
         object-fit: contain;
-        margin: 0 auto 0.6rem auto;
     }
 
     /* Homepage contact links in one row */
