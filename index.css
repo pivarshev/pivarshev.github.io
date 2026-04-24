@@ -583,16 +583,17 @@ td {
         display: none;
     }
 
-    /* Scrollboxes: no height cap, no inner scroll, just flow */
+    /* Scrollboxes: no height cap, no inner scroll, flush to edges */
     .scrollbox-container {
         flex-direction: column;
-        padding: 1rem;
+        padding: 0;
         gap: 0;
     }
 
     .scrollbox {
         max-height: none;
         overflow-y: visible;
+        padding: 0;
     }
 
     /* Panels: single column */
@@ -600,26 +601,45 @@ td {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         height: auto;
-        padding: 1rem;
-        gap: 1rem;
+        padding: 0;
+        gap: 0;
     }
 
     .panels-scrollbox {
         max-height: none;
         overflow-y: visible;
+        padding: 0;
     }
 
-    /* All artworks stack vertically on mobile */
+    /* All artworks: full width, flush to screen edges */
+    .artwork {
+        padding-bottom: 1.5rem;
+    }
+
+    .artwork img {
+        width: 100%;
+    }
+
+    .artwork figcaption {
+        width: 90%;
+        padding: 0 5%;
+    }
+
+    .artwork-horiz img {
+        width: 100%;
+    }
+
     .artwork-vert {
         flex-direction: column;
     }
 
     .artwork-vert img {
-        width: 95%;
+        width: 100%;
     }
 
     .artwork-vert figcaption {
-        width: 95%;
+        width: 90%;
+        padding: 0 5%;
     }
 
     /* Bottom nav */
