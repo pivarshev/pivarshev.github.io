@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pavel pivarshev</title>
+    <link rel="icon" href="icon.png">
+    <style>
+        body {
+            margin: 0;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            cursor: pointer;
+        }
+        img {
+            max-width: 95vw;
+            max-height: 95vh;
+            object-fit: contain;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <img id="artwork" src="" alt="">
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var src = params.get('img');
+        if (src) {
+            document.getElementById('artwork').src = src;
+        }
+
+        // Click outside image = go back
+        document.body.addEventListener('click', function (e) {
+            if (e.target.tagName !== 'IMG') {
+                history.back();
+            }
+        });
+    </script>
+</body>
+</html>
