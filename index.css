@@ -559,7 +559,7 @@ td {
     }
 
     .bio-items #description {
-        width: 90%;
+        width: 90% !important;
         text-align: center;
         margin: 0 auto 1rem auto;
     }
