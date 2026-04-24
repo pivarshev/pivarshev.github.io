@@ -611,13 +611,16 @@ td {
         padding: 0;
     }
 
-    /* All artworks: full width, flush to screen edges */
+    /* All artworks: full width, centered, flush to screen edges */
     .artwork {
         padding-bottom: 1.5rem;
+        align-items: center;
     }
 
     .artwork img {
         width: 100%;
+        display: block;
+        margin: 0 auto;
     }
 
     .artwork figcaption {
