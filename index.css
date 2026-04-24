@@ -527,12 +527,17 @@ td {
         height: auto;
     }
 
-    /* Bio: just text at the top, no gray box */
-    .bio {
+    /* Gallery bio: just text at the top, no gray box */
+    .container .bio {
         background-color: #fff;
         padding: 1rem 1.5rem;
         overflow-y: visible;
         justify-content: flex-start;
+    }
+
+    /* Homepage bio: keep the gray background */
+    .mobile-layout .bio {
+        background-color: #eee;
     }
 
     .bio-image-placeholder {
