@@ -52,10 +52,6 @@ h1:hover {
     margin: 0;
 }
 
-/* Reduce gap between name and dot (h4 has larger line-height) */
-.bio-links h4 {
-    margin-bottom: -0.35rem;
-}
 
 
 /* ======================== */
