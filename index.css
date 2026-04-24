@@ -45,6 +45,12 @@ h1:hover {
     background-color: #ddd;
 }
 
+/* Dots are decorative, not interactive */
+.bio-links h1 {
+    pointer-events: none;
+    user-select: none;
+}
+
 
 /* ======================== */
 /* LAYOUT: DESKTOP/MOBILE   */
