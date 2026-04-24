@@ -762,6 +762,12 @@ td {
         padding: 0.5rem;
     }
 
+    /* Homepage: stack image and nav tightly */
+    .mobile-layout .bio {
+        justify-content: center;
+        gap: 0;
+    }
+
     /* Homepage hero image */
     .mobile-hero-image {
         display: block;
