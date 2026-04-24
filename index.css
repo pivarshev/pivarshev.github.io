@@ -775,7 +775,7 @@ td {
     /* Photo + name side by side */
     .mobile-header {
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
         gap: 0.8rem;
         margin-bottom: 0.3rem;
