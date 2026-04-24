@@ -134,6 +134,31 @@ h1:hover {
         max-height: none;
         overflow-y: visible;
     }
+
+    /* Mobile homepage: compact layout to fit on one screen */
+    .mobile-home {
+        height: 100vh;
+        padding: 1.5rem 1.5rem 2rem 1.5rem;
+        justify-content: center;
+    }
+
+    .mobile-nav {
+        height: auto;
+        gap: 0.6rem;
+        padding-bottom: 0;
+    }
+
+    .mobile-nav li {
+        padding: 0.15rem 0;
+    }
+
+    .mobile-nav h4 {
+        margin: 0 0 0.3rem 0;
+    }
+
+    .mobile-divider h1 {
+        margin: 0.2rem 0;
+    }
 }
 
 

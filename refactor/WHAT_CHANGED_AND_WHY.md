@@ -229,3 +229,14 @@ CSS changes in the mobile media query:
 **UI impact:** Mobile only. Gallery pages now scroll as one continuous page instead of having nested scroll boxes. Desktop is unchanged.
 
 ---
+
+### Mobile fix — Compact homepage to fit on iPhone screen
+**What:** Tightened the mobile homepage layout so all links (projects + c.v./email/instagram/linkedin) fit on a single iPhone 16 screen without scrolling. Removed `<br><br>` spacer tags between every link and replaced with CSS gap/padding for consistent, compact spacing. Reduced excess top padding.
+
+**Why:** The email, instagram, and linkedin links were pushed below the fold by excessive spacing. Visitors shouldn't have to scroll just to find contact links on the homepage.
+
+**Files changed:** index.html, index.css
+
+**UI impact:** Mobile homepage only. Links are closer together but still easily tappable. All content fits on one screen. Desktop unchanged.
+
+---
