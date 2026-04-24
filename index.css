@@ -765,9 +765,10 @@ td {
     /* Homepage hero image */
     .mobile-hero-image {
         display: block;
-        width: 40%;
-        height: auto;
-        margin: 0 auto 0.5rem auto;
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        margin: 0 auto 0.3rem auto;
     }
 
     /* Homepage contact links in one row */
