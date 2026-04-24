@@ -73,7 +73,7 @@ h1:hover {
     }
 
     .mobile-layout {
-        overflow-y:auto;
+        overflow-y: auto;
         display: block;
     }
 
@@ -85,21 +85,17 @@ h1:hover {
         display: block;
     }
 
-    /* On mobile, scrollbox containers stack vertically */
-    .scrollbox-container {
-        flex-direction: column;
-        padding: 1rem;
-        gap: 0;
-    }
-
-    /* Bio sidebar becomes full-width on mobile */
+    /* Single column layout — one continuous scroll */
     .container {
         grid-template-columns: 1fr;
         height: auto;
     }
 
+    /* Bio: no separate scroll, just flows as content */
     .bio {
         padding: 1.5rem;
+        overflow-y: visible;
+        justify-content: flex-start;
     }
 
     .bio-items {
@@ -111,6 +107,18 @@ h1:hover {
         width: 90%;
         text-align: center;
         margin: 0 auto 1rem auto;
+    }
+
+    /* Scrollboxes: no height cap, no separate scroll */
+    .scrollbox-container {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0;
+    }
+
+    .scrollbox {
+        max-height: none;
+        overflow-y: visible;
     }
 
     /* Panels page: collapse 4-column grid to single column */

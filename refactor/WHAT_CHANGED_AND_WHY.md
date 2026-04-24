@@ -211,3 +211,21 @@ Some images were extremely oversized — for example, `shailen.jpg` in appreciat
 **UI impact:** Images display at exactly the same size on screen. The only difference is faster loading. At 2000px max width, images remain sharp on high-DPI (Retina) displays.
 
 ---
+
+### Mobile fix — Single continuous scroll on all gallery pages
+**What:** Fixed nested scrolling issue on mobile. Previously, each gallery page on mobile had multiple independent scrolling areas stacked inside the page: the bio sidebar was its own scroll box, and each gallery column was capped at 90vh with its own scroll. This created a confusing experience where you'd scroll one box, hit the bottom, then have to find and scroll the next box.
+
+Now on mobile: the bio/description text sits at the top, and all artworks flow below it in one continuous scroll. One finger, one scroll, top to bottom.
+
+CSS changes in the mobile media query:
+- `.bio`: removed `overflow-y: auto` so it flows as normal content
+- `.scrollbox`: removed `max-height: 90vh` and `overflow-y: auto` so artworks are not trapped in scroll boxes
+- The two gallery columns stack vertically and flow naturally
+
+**Why:** On desktop, separate scroll areas make sense — you have a fixed sidebar and scrollable gallery columns side by side. On mobile, everything is stacked in one column, so having multiple nested scroll areas is confusing and feels broken. The standard mobile pattern is one page, one scroll.
+
+**Files changed:** index.css
+
+**UI impact:** Mobile only. Gallery pages now scroll as one continuous page instead of having nested scroll boxes. Desktop is unchanged.
+
+---

@@ -1,0 +1,30 @@
+Hey Pavel! Quick update on the site refactor.
+
+Nothing changed on desktop — every page, every artwork, every transition looks and works exactly the same. The only thing you might notice is pages loading faster. On mobile, the site now shows your full portfolio (more on that below), but the look and feel is the same.
+
+Images load way faster now
+Compressed all 183 images from 318 MB down to 92 MB. The originals were massive (some were 14,000 pixels wide — way more than any screen needs). They're now sized for web at 2000px max, which is still sharp on Retina displays. Plus images now lazy-load as you scroll instead of all at once, so the panels page alone went from loading 100 MB upfront to loading images only as you get to them.
+
+Mobile is fully fleshed out
+Every page now shows all your work on mobile — no more "view on desktop" messages or missing pieces. The homepage links to all 7 projects. Panels is scrollable. Feeling and appreciation are linked.
+
+How to edit going forward
+Adding a new artwork is now really simple. Each piece is a clean block like this:
+
+<figure class="artwork artwork-horiz">
+    <a href="artworks/FOLDER/FILE.jpg" target="_blank" rel="noopener noreferrer">
+        <img loading="lazy" src="artworks/FOLDER/FILE.jpg">
+    </a>
+    <figcaption>
+        <cite>title</cite>
+        <br><br>date
+        <br>medium, dimensions
+    </figcaption>
+</figure>
+
+Just copy any existing block, swap the image path and caption text, and you're done. Use "artwork-horiz" for landscape pieces, "artwork-vert" for portrait. That's it — no more wrestling with nested tables.
+
+Why this is better than before
+Previously, every artwork was wrapped in a <table> with rows, columns, and IDs — about 12 lines of tangled markup per piece. And most pages had the entire content written out twice (once for desktop, once for mobile), so adding one artwork meant editing two places. Now it's one clean block, one place, and the CSS handles desktop vs mobile automatically.
+
+There's a refactor/ folder on the repo with full documentation if you ever want the details — including a file called WHAT_CHANGED_AND_WHY.md that logs every change made and why.
