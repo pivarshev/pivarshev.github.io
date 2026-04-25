@@ -544,10 +544,8 @@ td {
     overflow-y: auto;
     overflow-x: hidden;
     padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: start;
+    column-count: 2;
+    column-gap: 2rem;
 }
 
 .single-scroll-gallery .artwork {
