@@ -11,6 +11,7 @@
             background: #eee;
             cursor: pointer;
             min-height: 100vh;
+            font-family: serif;
         }
         .fit {
             display: flex;
@@ -26,9 +27,26 @@
         .full img {
             cursor: zoom-out;
         }
+        #back-label {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2.5vw;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            pointer-events: none;
+            user-select: none;
+        }
+        body.zoomed #back-label {
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <div id="back-label">&lt;&lt;&lt;</div>
     <div id="wrap" class="fit">
         <img id="artwork" src="" alt="">
     </div>
@@ -52,6 +70,7 @@
 
                 // Switch to full size
                 wrap.className = 'full';
+                document.body.classList.add('zoomed');
                 zoomed = true;
 
                 // After layout updates, scroll to the clicked spot
@@ -63,6 +82,7 @@
             } else {
                 // Zoom out
                 wrap.className = 'fit';
+                document.body.classList.remove('zoomed');
                 zoomed = false;
                 window.scrollTo(0, 0);
             }

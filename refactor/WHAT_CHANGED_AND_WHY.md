@@ -276,3 +276,14 @@ Each link sits in a gray box, matching the site's style.
 **UI impact:** Mobile homepage only. Contact links are now in a grid instead of a vertical list. Desktop unchanged.
 
 ---
+### Image viewer — Added "<<<" hint in left margin
+**What:** Added a small "<<<" label centered in the left margin of the full-screen image viewer. Clicking outside the image already returned to the previous page; the label makes that affordance discoverable. The label hides automatically when the image is zoomed in (since the image fills the screen).
+
+**Why:** Users had no visual cue that clicking outside the image would go back. The "<<<" matches the existing back-link language used elsewhere on the site.
+
+**Files changed:** viewer.html
+
+**UI impact:** Viewer page only. Adds a faint gray "<<<" on the left margin in fit mode; hidden when zoomed.
+
+---
+
