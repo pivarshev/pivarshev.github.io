@@ -100,7 +100,7 @@ h1:hover {
 
 .container {
     display: grid;
-    grid-template-columns: 2.25fr 5fr;
+    grid-template-columns: 1.7fr 5fr;
     height: 100vh;
 }
 
