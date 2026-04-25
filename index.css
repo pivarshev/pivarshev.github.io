@@ -100,13 +100,13 @@ h1:hover {
 
 .container {
     display: grid;
-    grid-template-columns: 3fr 5fr;
+    grid-template-columns: 2.25fr 5fr;
     height: 100vh;
 }
 
 .bio {
     background-color: #eee;
-    padding: 1.5rem 1.5rem 3rem 1.5rem;
+    padding: 1.5rem 0.75rem 1.5rem 0.75rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -150,7 +150,7 @@ h1:hover {
     justify-content: space-between;
     height: 50%;
     list-style: none;
-    margin: 1.5rem;
+    margin: 0.5rem;
     text-align:right;
 }
 
