@@ -287,3 +287,14 @@ Each link sits in a gray box, matching the site's style.
 
 ---
 
+### Image viewer — Reverted "< < <" hint
+**What:** Removed the "< < <" back-label and image max-width change from the image viewer. Restored viewer.html to its prior state (image at 95vw, no back hint).
+
+**Why:** The label could not be cleanly horizontally centered in the narrow left margin without overlapping the image, so we reverted the change.
+
+**Files changed:** viewer.html
+
+**UI impact:** Viewer page returns to its previous behavior (click image to zoom, click outside to go back).
+
+---
+
