@@ -106,7 +106,7 @@ h1:hover {
 
 .bio {
     background-color: #eee;
-    padding: 3rem;
+    padding: 1.5rem 3rem 3rem 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
