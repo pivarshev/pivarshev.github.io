@@ -152,7 +152,7 @@ h1:hover {
 .bio-items #title {
     background-color:#eee;
     margin-left:auto;
-    width:80%;
+    width:90%;
     text-align:right;
 }
 
@@ -163,7 +163,7 @@ h1:hover {
     font-size: 110%;
     color: #333;
     justify-content:center;
-    width:80%;
+    width:90%;
     text-align:right;
     margin-left:auto;
     margin-bottom:1rem;
