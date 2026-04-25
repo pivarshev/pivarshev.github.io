@@ -115,10 +115,15 @@ h1:hover {
 }
 
 /* Gallery page bios: description at top, use full height */
+.container .bio {
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+}
+
 .container .bio .bio-items {
     justify-content: flex-start;
     gap: 1rem;
-    height: auto;
+    height: auto !important;
 }
 
 .container .bio .bio-image-placeholder {
