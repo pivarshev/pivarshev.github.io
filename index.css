@@ -100,13 +100,13 @@ h1:hover {
 
 .container {
     display: grid;
-    grid-template-columns: 2.6fr 5fr;
+    grid-template-columns: 3fr 5fr;
     height: 100vh;
 }
 
 .bio {
     background-color: #eee;
-    padding: 1.5rem 3rem 3rem 3rem;
+    padding: 1.5rem 1.5rem 3rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -165,7 +165,6 @@ h1:hover {
     width:100%;
     text-align:right;
     white-space: nowrap;
-    font-size: 40px;
 }
 
 .bio-items #description {
