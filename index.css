@@ -119,10 +119,14 @@ body > .container {
     overflow-y:auto;
 }
 
-/* Gallery page bios: description at top, use full height */
+/* Gallery page bios: fixed in place, no scroll */
 .container .bio {
     justify-content: flex-start;
     padding-top: 1.5rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .container .bio .bio-items {
