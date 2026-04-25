@@ -11,7 +11,7 @@
             background: #eee;
             cursor: pointer;
             min-height: 100vh;
-            font-family: serif;
+            font-family: Helvetica, Arial, sans-serif;
         }
         .fit {
             display: flex;
@@ -29,15 +29,17 @@
         }
         #back-label {
             position: fixed;
-            left: 1rem;
+            left: 1.25vw;
             top: 50%;
-            transform: translateY(-50%);
-            color: #555;
-            font-size: 1.2rem;
-            letter-spacing: 0.1em;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 0.5rem;
             pointer-events: none;
             user-select: none;
             z-index: 10;
+            white-space: nowrap;
         }
         body.zoomed #back-label {
             display: none;
@@ -45,7 +47,7 @@
     </style>
 </head>
 <body>
-    <div id="back-label">&lt;&lt;&lt;</div>
+    <div id="back-label">&lt; &lt; &lt;</div>
     <div id="wrap" class="fit">
         <img id="artwork" src="" alt="">
     </div>

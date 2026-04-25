@@ -631,12 +631,14 @@ td {
         height: auto;
     }
 
-    /* Gallery bio: just text at the top, no gray box */
+    /* Gallery bio: just text flowing, no fixed height, no gray */
     .container .bio {
         background-color: #fff;
         padding: 1rem 1.5rem;
         overflow-y: visible;
         justify-content: flex-start;
+        height: auto;
+        position: static;
     }
 
     /* Homepage bio: keep the gray background */
