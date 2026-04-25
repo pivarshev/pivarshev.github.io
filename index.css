@@ -162,8 +162,9 @@ h1:hover {
 .bio-items #title {
     background-color:#eee;
     margin-left:auto;
-    width:90%;
+    width:100%;
     text-align:right;
+    white-space: nowrap;
 }
 
 .bio-items #description {
