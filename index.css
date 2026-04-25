@@ -100,8 +100,13 @@ h1:hover {
 
 .container {
     display: grid;
-    grid-template-columns: 1.7fr 5fr;
+    grid-template-columns: 2fr 5fr;
     height: 100vh;
+}
+
+/* Gallery pages: narrower sidebar */
+body > .container {
+    grid-template-columns: 1.7fr 5fr;
 }
 
 .bio {
