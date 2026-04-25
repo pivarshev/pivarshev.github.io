@@ -170,6 +170,8 @@ h1:hover {
     justify-content:center;
     flex-direction:column;
     justify-items:space-between;
+    list-style: none;
+    padding: 0;
 }
 
 .bio-items li {
