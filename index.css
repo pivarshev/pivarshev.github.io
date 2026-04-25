@@ -540,12 +540,14 @@ td {
 /* ======================== */
 
 .single-scroll-gallery {
-    max-height: 100vh;
-    overflow-y: auto;
+    height: 100vh;
+    overflow-y: scroll;
     overflow-x: hidden;
     padding: 2rem;
-    column-count: 2;
-    column-gap: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
 }
 
 .single-scroll-gallery .artwork {
