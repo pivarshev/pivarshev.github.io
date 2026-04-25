@@ -110,7 +110,7 @@ h1:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     overflow-y:auto;
 }
 
@@ -146,7 +146,7 @@ h1:hover {
 .bio-items #title {
     background-color:#eee;
     margin-left:auto;
-    width:50%;
+    width:80%;
     text-align:right;
 }
 
@@ -157,7 +157,7 @@ h1:hover {
     font-size: 110%;
     color: #333;
     justify-content:center;
-    width:50%;
+    width:80%;
     text-align:right;
     margin-left:auto;
     margin-bottom:1rem;
