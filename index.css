@@ -252,8 +252,9 @@ h1:hover {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    width: 75%;
-    margin: 0 auto;
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
     align-items: center;
     justify-items: center;
 }
