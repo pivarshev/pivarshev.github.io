@@ -104,10 +104,7 @@ h1:hover {
     height: 100vh;
 }
 
-/* Gallery pages: narrower sidebar */
-body > .container {
-    grid-template-columns: 1.7fr 5fr;
-}
+
 
 .bio {
     background-color: #eee;
@@ -119,24 +116,30 @@ body > .container {
     overflow-y:auto;
 }
 
-/* Gallery page bios: fixed in place, no scroll */
-.container .bio {
-    justify-content: flex-start;
-    padding-top: 1.5rem;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow: hidden;
-}
+/* Gallery page bios: desktop only */
+@media (min-width: 769px) {
+    .container .bio {
+        justify-content: flex-start;
+        padding-top: 1.5rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+    }
 
-.container .bio .bio-items {
-    justify-content: flex-start;
-    gap: 1rem;
-    height: auto !important;
-}
+    .container .bio .bio-items {
+        justify-content: flex-start;
+        gap: 1rem;
+        height: auto !important;
+    }
 
-.container .bio .bio-image-placeholder {
-    display: none;
+    .container .bio .bio-image-placeholder {
+        display: none;
+    }
+
+    body > .container {
+        grid-template-columns: 1.7fr 5fr;
+    }
 }
 
 .bio-image {
