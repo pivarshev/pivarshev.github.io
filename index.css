@@ -108,7 +108,7 @@ h1:hover {
 
 .bio {
     background-color: #eee;
-    padding: 1.5rem 0.75rem 1.5rem 0.75rem;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -120,7 +120,7 @@ h1:hover {
 @media (min-width: 769px) {
     .container .bio {
         justify-content: flex-start;
-        padding-top: 1.5rem;
+        padding: 1.5rem 0.75rem;
         position: sticky;
         top: 0;
         height: 100vh;
@@ -131,6 +131,7 @@ h1:hover {
         justify-content: flex-start;
         gap: 1rem;
         height: auto !important;
+        margin: 0.5rem;
     }
 
     .container .bio .bio-image-placeholder {
@@ -162,7 +163,7 @@ h1:hover {
     justify-content: space-between;
     height: 50%;
     list-style: none;
-    margin: 0.5rem;
+    margin: 1.5rem;
     text-align:right;
 }
 
