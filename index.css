@@ -773,11 +773,11 @@ td {
         order: 0;
     }
 
-    /* Single-scroll gallery: one column on mobile */
+    /* Single-scroll gallery: one column on mobile, NO separate scroll */
     .single-scroll-gallery {
         height: auto !important;
-        max-height: none;
-        overflow-y: visible !important;
+        max-height: none !important;
+        overflow: visible !important;
         padding: 0;
         flex-direction: column;
         gap: 0;
