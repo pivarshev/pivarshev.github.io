@@ -9,7 +9,7 @@
         var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         var buttons = document.querySelectorAll('.theme-toggle');
         for (var i = 0; i < buttons.length; i++) {
-            buttons[i].textContent = isDark ? '\u2600\uFE0F' : '\uD83C\uDF19';
+            buttons[i].textContent = isDark ? '\u2600\uFE0E' : '\u263E\uFE0E';
         }
     }
 
