@@ -646,14 +646,15 @@ td {
         height: auto;
     }
 
-    /* Gallery bio: just text flowing, no fixed height, no gray */
+    /* Gallery bio: just text flowing, no fixed height, no gray, NO PINNING */
     .container .bio {
         background-color: #fff;
         padding: 1rem 1.5rem;
-        overflow-y: visible;
+        overflow-y: visible !important;
         justify-content: flex-start;
-        height: auto;
-        position: static;
+        height: auto !important;
+        position: static !important;
+        top: auto !important;
     }
 
     /* Homepage bio: keep the gray background */
@@ -774,8 +775,9 @@ td {
 
     /* Single-scroll gallery: one column on mobile */
     .single-scroll-gallery {
+        height: auto !important;
         max-height: none;
-        overflow-y: visible;
+        overflow-y: visible !important;
         padding: 0;
         flex-direction: column;
         gap: 0;
