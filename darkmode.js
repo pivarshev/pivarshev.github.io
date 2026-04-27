@@ -1,12 +1,21 @@
 // Dark mode toggle — persists across pages via localStorage
 (function () {
-    // Apply saved theme immediately (before paint)
     var saved = localStorage.getItem('theme');
     if (saved === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
     }
 
-    // Toggle function — called by the button
+    function updateIcons() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        var buttons = document.querySelectorAll('.theme-toggle');
+        buttons.forEach(function (btn) {
+            btn.textContent = isDark ? '\u2600' : '\u263E';
+        });
+    }
+
+    // Update icons once DOM is ready
+    document.addEventListener('DOMContentLoaded', updateIcons);
+
     window.toggleDarkMode = function () {
         var current = document.documentElement.getAttribute('data-theme');
         if (current === 'dark') {
@@ -16,5 +25,6 @@
             document.documentElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
         }
+        updateIcons();
     };
 })();
