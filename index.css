@@ -785,6 +785,7 @@ td {
 
     .gallery-col {
         gap: 1.5rem;
+        flex: none;
     }
 
     .single-scroll-gallery .artwork {
