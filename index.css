@@ -36,6 +36,9 @@
     user-select: none;
     font-weight: bold;
     -webkit-text-stroke: 0.5px var(--text-link);
+    vertical-align: middle;
+    position: relative;
+    top: -3px;
 }
 
 
