@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pavel pivarshev</title>
     <link rel="icon" href="icon.png">
+    <script src="darkmode.js"></script>
     <style>
+        :root { --bg: #eee; }
+        [data-theme="dark"] { --bg: #1a1a1a; }
         * { margin: 0; padding: 0; }
         body {
-            background: #eee;
+            background: var(--bg, #eee);
             cursor: pointer;
             min-height: 100vh;
         }
