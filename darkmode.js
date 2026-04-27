@@ -8,12 +8,11 @@
     function updateIcons() {
         var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         var buttons = document.querySelectorAll('.theme-toggle');
-        buttons.forEach(function (btn) {
-            btn.textContent = isDark ? '\u263C' : '\u263E';
-        });
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].textContent = isDark ? 'light' : 'dark';
+        }
     }
 
-    // Update icons once DOM is ready
     document.addEventListener('DOMContentLoaded', updateIcons);
 
     window.toggleDarkMode = function () {
