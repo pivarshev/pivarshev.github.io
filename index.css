@@ -691,6 +691,9 @@ td {
 
     .container .bio {
         padding: 1rem 1.5rem;
+        background-color: var(--bg-content);
+        width: 100%;
+        box-sizing: border-box;
     }
 
     /* Homepage bio: keep the gray background */
