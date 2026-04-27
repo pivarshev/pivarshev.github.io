@@ -29,11 +29,13 @@
 .theme-toggle {
     background: none;
     border: none;
-    font-size: 18px;
+    font-size: 24px;
     cursor: pointer;
     color: var(--text-link);
     padding: 0.5rem;
     user-select: none;
+    font-weight: bold;
+    -webkit-text-stroke: 0.5px var(--text-link);
 }
 
 
