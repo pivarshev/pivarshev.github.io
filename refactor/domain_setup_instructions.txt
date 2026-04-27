@@ -1,0 +1,29 @@
+Hey Pavel! Here's how to connect your new domain:
+
+Step 1: Cloudflare DNS settings
+
+After you buy the domain, go to the DNS settings page in Cloudflare and add these 5 records:
+
+Type: A      | Name: @   | Content: 185.199.108.153
+Type: A      | Name: @   | Content: 185.199.109.153
+Type: A      | Name: @   | Content: 185.199.110.153
+Type: A      | Name: @   | Content: 185.199.111.153
+Type: CNAME  | Name: www | Content: pivarshev.github.io
+
+If Cloudflare asks about proxy status, set them all to "DNS only" (gray cloud, not orange).
+
+Step 2: GitHub repo settings
+
+Go to https://github.com/pivarshev/pivarshev.github.io/settings/pages
+
+Under "Custom domain", type your new domain (e.g. pivarshev.com) and click Save.
+
+Step 3: Enable HTTPS
+
+Wait a few minutes, then refresh that same Settings > Pages page. Check the box that says "Enforce HTTPS".
+
+Step 4: Wait
+
+Give it 5-10 minutes for everything to connect. Then visit your new domain and it should show your site.
+
+Let me know the domain name once you've bought it and I'll finish the setup on my end.

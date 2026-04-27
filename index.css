@@ -168,7 +168,8 @@ h1:hover {
         position: sticky;
         top: 0;
         height: 100vh;
-        overflow: hidden;
+        overflow: clip;
+        overflow-y: clip;
     }
 
     .container .bio .bio-items {
