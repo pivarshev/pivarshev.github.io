@@ -715,6 +715,7 @@ td {
         width: auto;
         text-align: center;
         margin: 0 auto 1em auto;
+        background-color: transparent;
     }
 
     .bio-items #description {
@@ -723,13 +724,10 @@ td {
         margin: 0 auto 1rem auto;
     }
 
-    /* Gallery pages: white bg on bio items */
-    .container .bio-items li {
-        background-color: var(--bg-content);
-    }
-
+    /* Gallery pages: transparent so the bio band shows through */
+    .container .bio-items li,
     .container .bio-items #description {
-        background-color: var(--bg-content);
+        background-color: transparent;
     }
 
     /* Homepage: keep gray bg on bio items */
