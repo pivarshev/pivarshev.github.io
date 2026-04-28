@@ -219,9 +219,9 @@ h1:hover {
 
 .bio-items #title {
     background-color: var(--bg-bio);
-    margin-left:auto;
+    margin-left:5%;
     width:100%;
-    text-align:right;
+    text-align:center;
     white-space: nowrap;
 }
 
@@ -469,7 +469,7 @@ h1:hover {
     align-items: center;
     padding-bottom: 2rem;
     margin: 0;
-    font-size: 85%;
+    font-size: 110%;
 }
 
 .artwork img {
@@ -725,6 +725,8 @@ td {
     }
 
     .bio-items #description {
+        font-size: 120%;
+        color: #333;
         width: 90% !important;
         text-align: center;
         margin: 0 auto 1rem auto;
