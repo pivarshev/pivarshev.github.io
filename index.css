@@ -1,16 +1,49 @@
+/*
+ * CHEAT SHEET — Common things to change:
+ *
+ * COLORS:
+ *   Light mode colors     → :root variables below
+ *   Dark mode colors      → [data-theme="dark"] below
+ *
+ * PROJECT PAGE — DESKTOP (sidebar + gallery):
+ *   Title font size       → DESKTOP section → .bio-items #title
+ *   Title alignment       → DESKTOP section → .bio-items #title → text-align
+ *   Description font size → DESKTOP section → .bio-items #description → font-size
+ *   Description alignment → DESKTOP section → .bio-items #description → text-align
+ *   Description width     → DESKTOP section → .bio-items #description → width
+ *   Sidebar width         → DESKTOP section → body > .container → grid-template-columns
+ *   Sidebar padding       → DESKTOP section → .container .bio → padding
+ *   Gallery column gap    → DESKTOP section → .gallery-col → gap
+ *   Caption below image   → DESKTOP section → .single-scroll-gallery .artwork figcaption → margin-top
+ *   Caption font size     → DESKTOP section → .single-scroll-gallery .artwork figcaption → font-size
+ *
+ * PROJECT PAGE — MOBILE (single scroll):
+ *   Title alignment       → MOBILE section → .bio-items #title → text-align
+ *   Description font size → MOBILE section → .bio-items #description → font-size
+ *   Description width     → MOBILE section → .bio-items #description → width
+ *   Image width           → MOBILE section → .artwork img → width
+ *
+ * HOMEPAGE:
+ *   Grid square size      → DESKTOP section → .grid-item → width
+ *   Name font size        → h4 below → font-size
+ *   Photo size (mobile)   → MOBILE section → .mobile-hero-image → width, height
+ *
+ * DARK MODE TOGGLE:
+ *   Icon size             → .theme-toggle → font-size
+ */
+
+
 /* ======================== */
-/* COLOR VARIABLES          */
+/* COLORS                   */
 /* ======================== */
 
 :root {
     --bg: #eee;
     --bg-bio: #eee;
     --bg-content: #fff;
-    --bg-grid: #eee;
     --text: #333;
     --text-light: #555;
     --text-link: #666;
-    --text-link-hover: #333;
     --hover-bg: #ddd;
 }
 
@@ -18,13 +51,39 @@
     --bg: #1a1a1a;
     --bg-bio: #222;
     --bg-content: #111;
-    --bg-grid: #333;
     --text: #ddd;
     --text-light: #aaa;
     --text-link: #aaa;
-    --text-link-hover: #fff;
     --hover-bg: #444;
 }
+
+
+/* ======================== */
+/* BASE (all screens)       */
+/* ======================== */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background-color: var(--bg);
+    overflow: hidden;
+    overflow-y: auto;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    scroll-behavior: smooth;
+}
+
+body.fade-in { opacity: 1; }
+body.fade-out { opacity: 0; }
+body.fade-out a { pointer-events: none; opacity: 0.5; }
+
+h1 { font-size: 20px; line-height: 125%; }
+h4 { font-size: 35px; line-height: 120%; margin: 0; }
+h1:hover { background-color: var(--hover-bg); }
 
 .theme-toggle {
     background: none;
@@ -41,427 +100,23 @@
     top: -4px;
 }
 
-
-/* ======================== */
-/* RESET & BASE            */
-/* ======================== */
-
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    box-sizing: border-box;
-    font-family: Helvetica, Arial, sans-serif;
-    color: var(--text);
-    background-color: var(--bg);
-    overflow: hidden;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-    scroll-behavior: smooth;
-    overflow-y:auto;
+.pink-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    background-color: #ff459f;
+    border-radius: 50%;
+    margin-right: 2px;
+    vertical-align: middle;
 }
 
-body.fade-in {
-    opacity: 1;
+.gray-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    background-color: #909090;
+    border-radius: 50%;
+    margin-right: 2px;
+    vertical-align: middle;
 }
-
-body.fade-out {
-    opacity: 0;
-}
-
-body.fade-out a {
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-h1 {
-    font-size: 20px;
-    line-height: 125%;
-}
-
-h4 {
-    font-size: 35px;
-    line-height: 120%;
-    margin: 0;
-}
-
-h1:hover {
-    background-color: var(--hover-bg);
-}
-
-/* Dots are decorative, not interactive */
-.bio-links h1 {
-    pointer-events: none;
-    user-select: none;
-}
-
-
-
-
-/* ======================== */
-/* LAYOUT: DESKTOP/MOBILE   */
-/* ======================== */
-
-.desktop-layout {
-    display: block;
-}
-
-.mobile-layout {
-    display: none;
-}
-
-.mobile-bottom-nav {
-    display: none;
-}
-
-.mobile-hero-image {
-    display: none;
-}
-
-.mobile-header {
-    display: none;
-}
-
-.mobile-contact-grid {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    text-align: center;
-}
-
-.desktop-only {
-    display: block;
-}
-
-.mobile-only {
-    display: none;
-}
-
-
-/* ======================== */
-/* CONTAINER & BIO SIDEBAR  */
-/* ======================== */
-
-.container {
-    display: grid;
-    grid-template-columns: 2fr 5fr;
-    height: 100vh;
-}
-
-
-
-.bio {
-    background-color: var(--bg-bio);
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    overflow-y:auto;
-}
-
-/* Gallery page bios: desktop only */
-@media (min-width: 769px) {
-    .container .bio {
-        justify-content: flex-start;
-        padding: 1.5rem 0.75rem;
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        overflow: clip;
-        overflow-y: clip;
-    }
-
-    .container .bio .bio-items {
-        justify-content: flex-start;
-        gap: 1rem;
-        height: auto !important;
-        margin: 0.5rem;
-    }
-
-    .container .bio .bio-image-placeholder {
-        display: none;
-    }
-
-    body > .container {
-        grid-template-columns: 1.7fr 5fr;
-    }
-}
-
-.bio-image {
-    background-color: var(--bg-content);
-    max-width: 350px;
-    height: auto;
-    display: block;
-}
-
-.bio-image-placeholder {
-    background-color: var(--bg-bio);
-    max-width: 350px;
-    height: auto;
-    display: block;
-}
-
-.bio-items {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 50%;
-    list-style: none;
-    margin: 1.5rem;
-    text-align:right;
-}
-
-.bio-items p {
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.bio-items #title {
-    background-color: var(--bg-bio);
-    margin-left:5%;
-    width:100%;
-    text-align:center;
-    white-space: nowrap;
-}
-
-.bio-items #description {
-    background-color: var(--bg-bio);
-    display: flex;
-    flex-direction: column;
-    font-size: 110%;
-    color: var(--text);
-    justify-content:center;
-    width:90%;
-    text-align:right;
-    margin-left:auto;
-    margin-bottom:1rem;
-    line-height: 125%;
-    min-width:150px;
-}
-
-.bio-items #links {
-    background-color: var(--bg-bio);
-    justify-content:center;
-    flex-direction:column;
-    justify-items:space-between;
-    list-style: none;
-    padding: 0;
-}
-
-.bio-items li {
-    background-color: var(--bg-bio);
-    text-align:center;
-}
-
-.bio-items #links a {
-    text-decoration: none;
-    color: var(--text-link);
-    font-weight: bold;
-    padding: 0.5rem;
-    background-color: var(--bg-bio);
-    transition: background-color 0.3s ease;
-    transition: color 0.9s ease;
-}
-
-.bio-items #links a:hover {
-    background-color: var(--hover-bg);
-    color: var(--text);
-}
-
-.bio-links {
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    height:50%;
-    list-style: none;
-    padding-bottom: 2rem;
-}
-
-.bio-links li {
-    background-color: var(--bg-bio);
-    color: var(--text);
-    text-decoration:bold;
-    text-align:center;
-}
-
-.bio-links li a {
-    text-decoration: none;
-    color: var(--text-link);
-    font-weight: bold;
-    padding: 0.5rem;
-    background-color: var(--bg-bio);
-    transition: background-color 0.3s ease;
-    transition: color 0.9s ease;
-}
-
-.bio-links li a:hover {
-    background-color: var(--hover-bg);
-    color: var(--text);
-}
-
-
-/* ======================== */
-/* HOME PAGE GRID           */
-/* ======================== */
-
-.grid-container {
-    background-color: var(--bg-content);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    width: 100%;
-    padding: 2rem;
-    box-sizing: border-box;
-    align-items: center;
-    justify-items: center;
-}
-
-.grid-item {
-    background-color: var(--bg-bio);
-    width: 200px;
-    aspect-ratio: 1;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
-
-.grid-item a {
-    text-decoration: none !important;
-    color: var(--text);
-    font-weight: bold;
-    line-height:125%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
-
-.grid-item-clear {
-    background-color: var(--bg-content);
-    width: 200px;
-    aspect-ratio: 1;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
-
-.grid-item-clear:hover {
-    background-color: var(--bg-bio);
-    transition: background-color 2.0s ease;
-}
-
-.grid-item a:link,
-.grid-item a:hover,
-.grid-item a:visited,
-.grid-item a:active {
-    color: var(--text) !important;
-    text-decoration-color: var(--text);
-}
-
-.grid-item:hover {
-    text-decoration: none;
-    color: var(--text);
-    text-align: center;
-    background-color: var(--hover-bg);
-    transition: background-color 2.0s ease;
-}
-
-.grid-item-clear a{
-    color: #fff;
-}
-
-.grid-item small a {
-    color: #999;
-    font-weight: normal;
-    font-size: 12px;
-    text-decoration: none;
-    position: relative;
-    z-index: 2;
-}
-
-.grid-item small a:hover {
-    color: var(--text);
-}
-
-
-/* ======================== */
-/* GALLERY SCROLLBOXES      */
-/* ======================== */
-
-.scrollbox-container {
-    display: flex;
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.scrollbox {
-    flex: 1;
-    max-height: 90vh;
-    overflow-y: auto;
-    align-content: center;
-    gap: 2rem;
-    padding: 1rem;
-    background-color: var(--bg-content);
-}
-
-/* Panels page: 4-column grid */
-.panels-scrollbox-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 1.9rem;
-    padding: 2rem;
-    height: 90vh;
-}
-
-.panels-scrollbox {
-    max-height: 100%;
-    overflow-y: auto;
-    padding: 1rem;
-    background-color: var(--bg-content);
-}
-
-
-/* ======================== */
-/* ARTWORK COMPONENTS       */
-/* ======================== */
-
-/*
- * ARTWORK COMPONENT — How to add a new artwork:
- *
- * Horizontal artwork (landscape orientation):
- *
- *   <figure class="artwork artwork-horiz">
- *       <a href="artworks/FOLDER/FILENAME.jpg" target="_blank" rel="noopener noreferrer">
- *           <img loading="lazy" src="artworks/FOLDER/FILENAME.jpg">
- *       </a>
- *       <figcaption>
- *           <span class="pink-dot"></span> <cite>title</cite>
- *           <br><br>date
- *           <br>medium, dimensions
- *       </figcaption>
- *   </figure>
- *
- * Vertical artwork (portrait orientation):
- *
- *   <figure class="artwork artwork-vert">
- *       <a href="artworks/FOLDER/FILENAME.jpg" target="_blank" rel="noopener noreferrer">
- *           <img loading="lazy" src="artworks/FOLDER/FILENAME.jpg">
- *       </a>
- *       <figcaption>
- *           <span class="pink-dot"></span> <cite>title</cite>
- *           <br><br>date
- *           <br>medium, dimensions
- *       </figcaption>
- *   </figure>
- *
- * Use class="pink-dot" if available, "gray-dot" if not.
- * Add class="desktop-only" to the <figure> to hide on mobile.
- */
 
 .artwork {
     display: flex;
@@ -472,10 +127,7 @@ h1:hover {
     font-size: 110%;
 }
 
-.artwork img {
-    width: 100%;
-    height: auto;
-}
+.artwork img { width: 100%; height: auto; }
 
 .artwork figcaption {
     text-align: center;
@@ -484,192 +136,293 @@ h1:hover {
     width: 95%;
 }
 
-.artwork-horiz {
-    flex-direction: column;
-}
 
-.artwork-horiz img {
-    width: 95%;
-}
+/* ======================== */
+/* DESKTOP (> 768px)        */
+/* ======================== */
 
-.artwork-horiz figcaption {
-    width: 95%;
-}
+@media (min-width: 769px) {
 
-.artwork-vert {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
+    .desktop-layout { display: block; }
+    .mobile-layout { display: none; }
+    .mobile-bottom-nav { display: none; }
+    .mobile-hero-image { display: none; }
+    .mobile-header { display: none; }
 
-.artwork-vert img {
-    width: 70%;
-}
+    /* --- Homepage --- */
 
-.artwork-vert figcaption {
-    width: 30%;
-    margin: 1rem;
-    text-align: center;
-}
+    .desktop-layout .container {
+        display: grid;
+        grid-template-columns: 2fr 5fr;
+        height: 100vh;
+    }
 
-.artwork-vert-left figcaption {
-    order: -1;
-}
+    .bio {
+        background-color: var(--bg-bio);
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        overflow-y: auto;
+    }
 
-/* Legacy support */
-.scroll-item {
-    font-size: 85%;
-    display:flex;
-    flex-direction: column;
-    padding-bottom: 2rem;
-}
+    .bio-image {
+        background-color: var(--bg-content);
+        max-width: 350px;
+        height: auto;
+        display: block;
+    }
 
-table {
-    margin: 0 auto;
-    border-collapse: collapse;
-}
+    .bio-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 50%;
+        list-style: none;
+        padding-bottom: 2rem;
+    }
 
-td {
-    text-align: center;
-    vertical-align: middle;
-    padding: 10px;
-}
+    .bio-links li {
+        background-color: var(--bg-bio);
+        color: var(--text);
+        text-align: center;
+    }
 
-.scroll-item img {
-    width: 100%;
-    height:auto;
-}
+    .bio-links li a {
+        text-decoration: none;
+        color: var(--text-link);
+        font-weight: bold;
+        padding: 0.5rem;
+        background-color: var(--bg-bio);
+        transition: color 0.9s ease;
+    }
 
-#vert-description {
-    width: 30%;
-    margin: 1rem;
-    line-height:133%;
-    text-align:center;
-    align-items:center;
-}
+    .bio-links li a:hover {
+        background-color: var(--hover-bg);
+        color: var(--text);
+    }
 
-#horiz-description {
-    width: 95%;
-    margin: 1rem;
-    line-height:133%;
-    text-align:center;
-    align-items:center;
-}
+    .bio-links h1 { pointer-events: none; user-select: none; }
+    .bio-links h1:hover { background-color: transparent; }
 
-#horiz-image {
-    width: 95%;
-    height:auto;
-    align-items:center;
-    padding-bottom:1rem;
-}
+    .mobile-contact-grid {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        text-align: center;
+    }
 
-#vert-image {
-    width: 70%;
-    height:auto;
-    align-items:center;
+    .grid-container {
+        background-color: var(--bg-content);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        width: 100%;
+        padding: 2rem;
+        box-sizing: border-box;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .grid-item {
+        background-color: var(--bg-bio);
+        width: 200px;
+        aspect-ratio: 1;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .grid-item a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: bold;
+        line-height: 125%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .grid-item a:link,
+    .grid-item a:hover,
+    .grid-item a:visited,
+    .grid-item a:active { color: var(--text); }
+
+    .grid-item:hover {
+        background-color: var(--hover-bg);
+        transition: background-color 2.0s ease;
+    }
+
+    .grid-item-clear {
+        background-color: var(--bg-content);
+        width: 200px;
+        aspect-ratio: 1;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .grid-item-clear:hover {
+        background-color: var(--bg-bio);
+        transition: background-color 2.0s ease;
+    }
+
+    .grid-item-clear a { color: var(--bg-content); }
+
+
+    /* --- Project pages --- */
+
+    /* Sidebar width — change 1.7fr to make wider/narrower */
+    body > .container {
+        display: grid;
+        grid-template-columns: 1.7fr 5fr;
+        height: 100vh;
+    }
+
+    /* Sidebar: locked, no scroll */
+    .container .bio {
+        background-color: var(--bg-bio);
+        padding: 1.5rem 0.75rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: clip;
+    }
+
+    .container .bio .bio-image-placeholder { display: none; }
+
+    .bio-items {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 1rem;
+        height: auto;
+        list-style: none;
+        margin: 0.5rem;
+        text-align: right;
+    }
+
+    .bio-items p { font-size: 16px; }
+
+    /* Title — change font-size, text-align here */
+    .bio-items #title {
+        background-color: var(--bg-bio);
+        margin-left: 5%;
+        width: 100%;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    /* Description — change font-size, text-align, width here */
+    .bio-items #description {
+        background-color: var(--bg-bio);
+        display: flex;
+        flex-direction: column;
+        font-size: 110%;
+        color: var(--text);
+        justify-content: center;
+        width: 90%;
+        text-align: right;
+        margin-left: auto;
+        margin-bottom: 1rem;
+        line-height: 125%;
+        min-width: 150px;
+    }
+
+    .bio-items #links {
+        background-color: var(--bg-bio);
+        list-style: none;
+        padding: 0;
+    }
+
+    .bio-items li {
+        background-color: var(--bg-bio);
+        text-align: center;
+    }
+
+    .bio-items #links a {
+        text-decoration: none;
+        color: var(--text-link);
+        font-weight: bold;
+        padding: 0.5rem;
+        background-color: var(--bg-bio);
+        transition: color 0.9s ease;
+    }
+
+    .bio-items #links a:hover {
+        background-color: var(--hover-bg);
+        color: var(--text);
+    }
+
+    /* Gallery: two columns, one scroll */
+    .single-scroll-gallery {
+        height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding: 2rem;
+        display: flex;
+        gap: 2rem;
+    }
+
+    .gallery-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .single-scroll-gallery .artwork {
+        flex-direction: column;
+        margin: 0;
+        padding-bottom: 0;
+    }
+
+    .single-scroll-gallery .artwork a {
+        order: 0;
+        width: 100%;
+    }
+
+    .single-scroll-gallery .artwork img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Caption — change font-size, margin-top here */
+    .single-scroll-gallery .artwork figcaption {
+        width: 100%;
+        order: 1;
+        margin-top: 0.75rem;
+        margin-bottom: 0;
+        text-align: center;
+        line-height: 133%;
+        font-size: 85%;
+    }
 }
 
 
 /* ======================== */
-/* ARTWORK SIZE VARIANTS    */
-/* ======================== */
-
-.artwork-tall    { width: auto; height: 90vh; }
-.artwork-wide    { width: 68.5%; height: auto; }
-.artwork-medium  { width: 70%; height: auto; }
-
-
-/* ======================== */
-/* INDICATORS               */
-/* ======================== */
-
-.pink-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background-color: #ff459f;
-    border-radius: 50%;
-    margin-right: 2px;
-    vertical-align: middle;
-}
-
-.gray-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background-color: #909090;
-    border-radius: 50%;
-    margin-right: 2px;
-    vertical-align: middle;
-}
-
-
-/* ======================== */
-/* SINGLE SCROLL GALLERY    */
-/* (used on "new" pages)    */
-/* ======================== */
-
-.single-scroll-gallery {
-    height: 100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 2rem;
-    display: flex;
-    gap: 2rem;
-}
-
-.gallery-col {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.single-scroll-gallery .artwork {
-    flex-direction: column;
-    margin: 0;
-    padding-bottom: 0;
-}
-
-.single-scroll-gallery .artwork a {
-    order: 0;
-    width: 100%;
-}
-
-.single-scroll-gallery .artwork img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.single-scroll-gallery .artwork figcaption {
-    width: 100%;
-    order: 1;
-    margin-top: 0.75rem;
-    margin-bottom: 0;
-    text-align: center;
-    line-height: 133%;
-    font-size: 85%;
-}
-
-
-/* ======================== */
-/* MOBILE OVERRIDES         */
-/* (must be last to win)    */
+/* MOBILE (<= 768px)        */
 /* ======================== */
 
 @media (max-width: 768px) {
 
-    /* Unlock page height — one long scroll, no horizontal scroll */
     body, html {
         height: auto;
         overflow-x: hidden;
         overflow-y: visible;
     }
 
-    .desktop-layout {
-        display: none;
-    }
+    .desktop-layout { display: none; }
 
     .mobile-layout {
         display: block;
@@ -677,15 +430,86 @@ td {
         min-height: 100vh;
     }
 
-    .desktop-only {
-        display: none;
+    /* --- Homepage mobile --- */
+
+    .mobile-layout .bio {
+        background-color: var(--bg-bio);
+        justify-content: flex-start;
+        gap: 0;
     }
 
-    .mobile-only {
+    .mobile-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 0.8rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .mobile-header h4 { margin: 0; }
+
+    /* Photo — change width, height here */
+    .mobile-hero-image {
         display: block;
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
     }
 
-    /* On mobile: everything is just plain blocks stacking top to bottom */
+    .bio-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 50%;
+        list-style: none;
+        padding-bottom: 2rem;
+    }
+
+    .bio-links li {
+        background-color: var(--bg-bio);
+        color: var(--text);
+        text-align: center;
+    }
+
+    .bio-links li a {
+        text-decoration: none;
+        color: var(--text-link);
+        font-weight: bold;
+        padding: 0.5rem;
+        background-color: var(--bg-bio);
+        transition: color 0.9s ease;
+    }
+
+    .bio-links li a:hover {
+        background-color: var(--hover-bg);
+        color: var(--text);
+    }
+
+    .bio-links h1 { pointer-events: none; user-select: none; }
+
+    .mobile-contact-grid {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .mobile-bottom-nav {
+        display: flex;
+        justify-content: center;
+        padding: 2rem 1rem;
+    }
+
+    .mobile-bottom-nav a {
+        text-decoration: none;
+        color: var(--text-link);
+        font-weight: bold;
+        padding: 0.5rem;
+    }
+
+
+    /* --- Project pages: plain blocks, one scroll --- */
+
     .container,
     .container .bio,
     .container .bio .bio-items,
@@ -702,21 +526,9 @@ td {
         box-sizing: border-box;
     }
 
-    /* Homepage bio: keep the gray background */
-    .mobile-layout .bio {
-        background-color: var(--bg-bio);
-    }
+    .bio-image-placeholder { display: none; }
 
-    .bio-image-placeholder {
-        display: none;
-    }
-
-    .bio-items {
-        text-align: center;
-        height: auto;
-        margin: 0;
-    }
-
+    /* Title — change text-align here */
     .bio-items #title {
         width: auto;
         text-align: center;
@@ -724,59 +536,24 @@ td {
         background-color: transparent;
     }
 
+    /* Description — change font-size, width here */
     .bio-items #description {
         font-size: 120%;
-        color: #333;
-        width: 90% !important;
+        color: var(--text);
+        width: 90%;
         text-align: center;
         margin: 0 auto 1rem auto;
+        background-color: transparent;
     }
 
-    /* Gallery pages: transparent so the bio band shows through */
     .container .bio-items li,
     .container .bio-items #description {
         background-color: transparent;
     }
 
-    /* Homepage: keep gray bg on bio items */
-    .mobile-layout .bio-links li {
-        background-color: var(--bg-bio);
-    }
+    .bio-items #links { display: none; }
 
-    /* Hide the sidebar back link — it's at the bottom now */
-    .bio-items #links {
-        display: none;
-    }
-
-    /* Scrollboxes: no height cap, no inner scroll, flush to edges */
-    .scrollbox-container {
-        flex-direction: column;
-        padding: 0;
-        gap: 0;
-    }
-
-    .scrollbox {
-        max-height: none;
-        overflow-y: visible;
-        padding: 0;
-    }
-
-    /* Panels: single column */
-    .panels-scrollbox-container {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        height: auto;
-        padding: 0;
-        gap: 0;
-    }
-
-    .panels-scrollbox {
-        max-height: none;
-        overflow-y: visible;
-        padding: 0;
-    }
-
-    /* All artworks: full width, centered, flush to screen edges */
+    /* Artworks — change width here */
     .artwork {
         padding-bottom: 1.5rem;
         align-items: center;
@@ -793,78 +570,11 @@ td {
         padding: 0 5%;
     }
 
-    .artwork-horiz img {
-        width: 100%;
-    }
+    .artwork-vert { flex-direction: column; }
+    .artwork-vert img { width: 100%; }
+    .artwork-vert figcaption { width: 90%; padding: 0 5%; }
+    .artwork-vert-left figcaption { order: 1; }
+    .artwork-vert-left a { order: 0; }
 
-    .artwork-vert {
-        flex-direction: column;
-    }
-
-    .artwork-vert img {
-        width: 100%;
-    }
-
-    .artwork-vert figcaption {
-        width: 90%;
-        padding: 0 5%;
-    }
-
-    .artwork-vert-left figcaption {
-        order: 1;
-    }
-
-    .artwork-vert-left a {
-        order: 0;
-    }
-
-
-    /* Bottom nav */
-    .mobile-bottom-nav {
-        display: flex;
-        justify-content: center;
-        padding: 2rem 1rem;
-    }
-
-    .mobile-bottom-nav a {
-        text-decoration: none;
-        color: var(--text-link);
-        font-weight: bold;
-        padding: 0.5rem;
-    }
-
-    /* Homepage: start from top, not centered */
-    .mobile-layout .bio {
-        justify-content: flex-start;
-        gap: 0;
-    }
-
-    /* Photo + name side by side */
-    .mobile-header {
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        gap: 0.8rem;
-        margin-bottom: 0.3rem;
-    }
-
-    .mobile-header h4 {
-        margin: 0;
-    }
-
-    /* Homepage hero image */
-    .mobile-hero-image {
-        display: block;
-        width: 120px;
-        height: 120px;
-        object-fit: contain;
-    }
-
-    /* Homepage contact links in one row */
-    .mobile-contact-grid {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        text-align: center;
-    }
+    .gallery-col { gap: 1.5rem; flex: none; }
 }
