@@ -9,7 +9,7 @@
 
 2. **Open the project HTML file** (e.g. `grids.html`)
 
-3. **Find one of the two `<div class="gallery-col">` sections** — these are the two columns
+3. **Find one of the two columns** — look for `<!-- Column 1 -->` and `<!-- Column 2 -->` comments in the HTML
 
 4. **Copy this block and paste it into either column:**
 
@@ -27,13 +27,15 @@
 ```
 
 5. **Change these things:**
-   - `PROJECT_NAME/your_image.jpg` → your actual folder and filename (appears 3 times)
+   - `PROJECT_NAME/your_image.jpg` → your actual folder and filename (appears twice)
+     - In the `href`: keep `artworks_full/` prefix (this is the full-res version for zoom)
+     - In the `src`: keep `artworks_small/` prefix (this is the small version that loads fast)
    - `artwork title` → the title of the piece
    - `date` → when you made it
    - `medium, dimensions` → e.g. "oil on canvas, 24"x36""
    - `pink-dot` → use `pink-dot` if available for sale, `gray-dot` if not
 
-6. **Save and push to GitHub.** The site updates automatically.
+6. **Save and push to GitHub.** The site updates automatically in about 1-2 minutes.
 
 
 ## Adding a New Project (New Gallery Page)
