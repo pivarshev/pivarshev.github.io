@@ -38,23 +38,23 @@
 /* ======================== */
 
 :root {
-    --bg: #eee;
-    --bg-bio: #eee;
-    --bg-content: #fff;
-    --text: #333;
-    --text-light: #555;
-    --text-link: #666;
-    --hover-bg: #ddd;
+    --bg: #eee;             /* page background */
+    --bg-bio: #eee;         /* sidebar, grid squares, homepage bg */
+    --bg-content: #fff;     /* gallery area, homepage right side, mobile description band */
+    --text: #333;           /* main text, titles, captions */
+    --text-light: #555;     /* "hi, i'm pj" intro text */
+    --text-link: #666;      /* links: cv, email, instagram, linkedin, back link */
+    --hover-bg: #ddd;       /* hover state on links, grid squares, h1 */
 }
 
 [data-theme="dark"] {
-    --bg: #1a1a1a;
-    --bg-bio: #222;
-    --bg-content: #111;
-    --text: #ddd;
-    --text-light: #aaa;
-    --text-link: #aaa;
-    --hover-bg: #444;
+    --bg: #1a1a1a;          /* page background */
+    --bg-bio: #222;         /* sidebar, grid squares, homepage bg */
+    --bg-content: #111;     /* gallery area, homepage right side */
+    --text: #ddd;           /* main text */
+    --text-light: #aaa;     /* intro text */
+    --text-link: #aaa;      /* links */
+    --hover-bg: #444;       /* hover states */
 }
 
 

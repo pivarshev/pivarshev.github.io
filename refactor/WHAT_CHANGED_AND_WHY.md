@@ -298,3 +298,26 @@ Each link sits in a gray box, matching the site's style.
 
 ---
 
+### Developer experience — Tools for Pavel to edit the site
+
+**What:** Added several files to make it easier for Pavel to edit the site without help:
+
+1. `HOW_TO_EDIT.md` — step-by-step guide covering: adding artwork, creating new project pages, resizing images, changing colors, changing fonts/alignment, and managing available/not-available dots.
+
+2. `_template.html` — a blank project page template. Copy it, rename it, fill in the title/description/artworks. Has comments showing exactly where to put things.
+
+3. `resize.sh` — a bash script that creates medium (2000px) and small (400px) versions from full-res images. Run `bash resize.sh` after adding new images to `artworks_full/`. Can also resize just one folder: `bash resize.sh grids`.
+
+4. Color preview comments in `index.css` — each CSS variable now has a comment explaining what it affects (e.g. `--bg-bio: #eee; /* sidebar, grid squares, homepage bg */`).
+
+5. Column comments in all gallery HTML files — `<!-- Column 1 -->` and `<!-- Column 2 -->` so Pavel knows where to add new artworks.
+
+**Why:** Pavel needs to be able to edit his own site without relying on a developer for every change.
+
+**Files added:** HOW_TO_EDIT.md, _template.html, resize.sh
+**Files changed:** index.css (color comments), all gallery HTML files (column comments)
+
+**UI impact:** None. Documentation and tooling only.
+
+---
+
