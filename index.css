@@ -209,12 +209,13 @@ h1:hover {
     height: 50%;
     list-style: none;
     margin: 1.5rem;
-    text-align:right;
+    text-align:center;
 }
 
 .bio-items p {
     text-decoration: none;
     font-size: 16px;
+    text-align: center;
 }
 
 .bio-items #title {
@@ -229,15 +230,15 @@ h1:hover {
     background-color: var(--bg-bio);
     display: flex;
     flex-direction: column;
-    font-size: 110%;
+    font-size: 95%;
     color: var(--text);
     justify-content:center;
     width:90%;
-    text-align:right;
     margin-left:auto;
     margin-bottom:1rem;
     line-height: 125%;
     min-width:150px;
+    text-align: center;
 }
 
 .bio-items #links {
