@@ -409,23 +409,6 @@ h1:hover {
     background-color: var(--bg-content);
 }
 
-/* Panels page: 4-column grid */
-.panels-scrollbox-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 1.9rem;
-    padding: 2rem;
-    height: 90vh;
-}
-
-.panels-scrollbox {
-    max-height: 100%;
-    overflow-y: auto;
-    padding: 1rem;
-    background-color: var(--bg-content);
-}
-
 
 /* ======================== */
 /* ARTWORK COMPONENTS       */
