@@ -49,7 +49,7 @@
 body, html {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 100%;
     box-sizing: border-box;
     font-family: Helvetica, Arial, sans-serif;
     color: var(--text);
@@ -58,7 +58,6 @@ body, html {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
     scroll-behavior: smooth;
-    overflow-y:auto;
 }
 
 body.fade-in {
@@ -148,16 +147,20 @@ h1:hover {
     height: 100vh;
 }
 
-
+.container > * {
+    min-height: 0;
+}
 
 .bio {
     background-color: var(--bg-bio);
+    height: 100vh;
     padding: 3rem;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     align-items: center;
     justify-content: space-between;
-    overflow-y:auto;
+    overflow: hidden;
 }
 
 /* Gallery page bios: desktop only */
@@ -169,7 +172,6 @@ h1:hover {
         top: 0;
         height: 100vh;
         overflow: clip;
-        overflow-y: clip;
     }
 
     .container .bio .bio-items {
@@ -596,11 +598,13 @@ td {
 
 .single-scroll-gallery {
     height: 100vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     padding: 2rem;
+    box-sizing: border-box;
     display: flex;
     gap: 2rem;
+    min-height: 0;
 }
 
 .gallery-col {
@@ -608,7 +612,12 @@ td {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    min-height: 0;
 }
+
+/* .gallery-col > :last-child {
+    margin-bottom: 3rem;
+} */
 
 .single-scroll-gallery .artwork {
     flex-direction: column;
