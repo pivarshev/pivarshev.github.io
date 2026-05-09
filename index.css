@@ -737,9 +737,30 @@ td {
         background-color: var(--bg-bio);
     }
 
-    /* Hide the sidebar back link — it's at the bottom now */
+    /* Hide the sidebar back link — it's at the bottom now.
+       But keep the dot legend (first <li>) on pages that have it. */
     .bio-items #links {
+        display: block;
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem auto 0 auto !important;
+        text-align: center;
+    }
+
+    .bio-items #links li {
         display: none;
+    }
+
+    .bio-items #links li:first-child {
+        display: block;
+        background-color: transparent;
+    }
+
+    /* Slightly larger dots on mobile so they're easier to see */
+    .pink-dot,
+    .gray-dot {
+        width: 10px;
+        height: 10px;
     }
 
     /* Scrollboxes: no height cap, no inner scroll, flush to edges */
