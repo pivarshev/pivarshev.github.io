@@ -12,6 +12,8 @@
     --text-link: #666;
     --text-link-hover: #333;
     --hover-bg: #ddd;
+    --dot-pink: #ff459f;
+    --dot-gray: #909090;
 }
 
 [data-theme="dark"] {
@@ -24,6 +26,8 @@
     --text-link: #aaa;
     --text-link-hover: #fff;
     --hover-bg: #444;
+    --dot-pink: #ff5cad;
+    --dot-gray: #666;
 }
 
 .theme-toggle {
@@ -574,7 +578,7 @@ td {
     display: inline-block;
     width: 8px;
     height: 8px;
-    background-color: #ff459f;
+    background-color: var(--dot-pink);
     border-radius: 50%;
     margin-right: 2px;
     vertical-align: middle;
@@ -584,7 +588,7 @@ td {
     display: inline-block;
     width: 8px;
     height: 8px;
-    background-color: #909090;
+    background-color: var(--dot-gray);
     border-radius: 50%;
     margin-right: 2px;
     vertical-align: middle;
