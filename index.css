@@ -731,7 +731,7 @@ td {
 
     .bio-items #description {
         font-size: 120%;
-        color: #333;
+        color: var(--text);
         width: 90% !important;
         text-align: center;
         margin: 0 auto 1rem auto;
