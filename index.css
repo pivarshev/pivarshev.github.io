@@ -574,25 +574,32 @@ td {
 /* INDICATORS               */
 /* ======================== */
 
-.pink-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background-color: var(--dot-pink);
-    border-radius: 50%;
-    margin-right: 2px;
-    vertical-align: middle;
-}
-
+/* Dots render via ::before so the empty <span> always produces a
+   visible box (some mobile browsers collapse empty inline-blocks). */
+.pink-dot,
 .gray-dot {
     display: inline-block;
-    width: 8px;
-    height: 8px;
-    background-color: var(--dot-gray);
+    width: 0.7em;
+    height: 0.7em;
     border-radius: 50%;
-    margin-right: 2px;
-    vertical-align: middle;
+    margin-right: 0.3em;
+    vertical-align: 0.05em;
+    flex-shrink: 0;
 }
+
+.pink-dot::before,
+.gray-dot::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.pink-dot { background-color: var(--dot-pink); }
+.gray-dot { background-color: var(--dot-gray); }
+.pink-dot::before { background-color: var(--dot-pink); }
+.gray-dot::before { background-color: var(--dot-gray); }
 
 
 /* ======================== */
@@ -763,8 +770,8 @@ td {
     /* Slightly larger dots on mobile so they're easier to see */
     .pink-dot,
     .gray-dot {
-        width: 10px;
-        height: 10px;
+        width: 0.85em;
+        height: 0.85em;
     }
 
     /* Scrollboxes: no height cap, no inner scroll, flush to edges */
