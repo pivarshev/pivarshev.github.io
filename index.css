@@ -315,10 +315,11 @@ h1:hover {
 .grid-container {
     background-color: var(--bg-content);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     width: 100%;
     padding: 2rem;
+    padding-bottom: 5rem;
     box-sizing: border-box;
     align-items: center;
     justify-items: center;
